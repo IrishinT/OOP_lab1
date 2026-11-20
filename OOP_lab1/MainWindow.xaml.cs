@@ -22,5 +22,11 @@ namespace OOP_lab1
             InitializeComponent();
             DataContext = new MainViewModel();
         }
+
+        private void ExplicitUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            ExplicitBox.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+        }
+
     }
 }

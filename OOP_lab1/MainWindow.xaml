@@ -731,6 +731,103 @@
                     </WrapPanel>
                 </ScrollViewer>
             </TabItem>
+
+            <TabItem Header="{DynamicResource Loc_TabBindings}">
+                <ScrollViewer>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <GroupBox Grid.Column="0" Header="Типы привязки (Binding.Mode)" Padding="12">
+                            <StackPanel>
+                                <Border Background="{DynamicResource ControlBackgroundBrush}"
+                                        BorderBrush="{DynamicResource ControlBorderBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="4"
+                                        Padding="10"
+                                        Margin="0,0,0,15">
+                                    <StackPanel>
+                                        <TextBlock Text="Значение в ViewModel (источник):"
+                                                   Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                        <TextBlock Text="{Binding BindingModeText}"
+                                                   FontWeight="Bold"
+                                                   FontSize="16"
+                                                   Margin="0,4,0,8"/>
+                                        <Button Content="Изменить значение из ViewModel"
+                                                Style="{StaticResource PrimaryButtonStyle}"
+                                                Command="{Binding ChangeBindingTextCommand}"
+                                                HorizontalAlignment="Left"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <TextBlock Text="1. OneWay (Источник > Цель):" FontWeight="SemiBold"/>
+                                <TextBox Text="{Binding BindingModeText, Mode=OneWay}" Margin="0,3,0,4"/>
+                                <TextBlock Text="Меняется при изменении VM, но ввод здесь не меняет VM."
+                                           Style="{StaticResource CaptionTextStyle}" Margin="0,0,0,12"/>
+
+                                <TextBlock Text="2. TwoWay (Источник <> Цель):" FontWeight="SemiBold"/>
+                                <TextBox Text="{Binding BindingModeText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,4"/>
+                                <TextBlock Text="Двусторонняя синхронизация в реальном времени."
+                                           Style="{StaticResource CaptionTextStyle}" Margin="0,0,0,12"/>
+
+                                <TextBlock Text="3. OneTime (Один раз при запуске):" FontWeight="SemiBold"/>
+                                <TextBox Text="{Binding BindingModeText, Mode=OneTime}" Margin="0,3,0,4"/>
+                                <TextBlock Text="Берёт начальное значение один раз и больше не обновляется."
+                                           Style="{StaticResource CaptionTextStyle}" Margin="0,0,0,12"/>
+
+                                <TextBlock Text="4. OneWayToSource (Цель > Источник):" FontWeight="SemiBold"/>
+                                <TextBox Text="{Binding BindingModeText, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,4"/>
+                                <TextBlock Text="Стартует пустым. Ввод здесь меняет VM, но изменения VM сюда не приходят."
+                                           Style="{StaticResource CaptionTextStyle}"/>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Grid.Column="2" Header="Режимы обновления (UpdateSourceTrigger)" Padding="12">
+                            <StackPanel>
+                                <Border Background="{DynamicResource ControlBackgroundBrush}"
+                                        BorderBrush="{DynamicResource ControlBorderBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="4"
+                                        Padding="10"
+                                        Margin="0,0,0,15">
+                                    <StackPanel>
+                                        <TextBlock Text="Значение в ViewModel (источник):"
+                                                   Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                        <TextBlock Text="{Binding TriggerDemoText}"
+                                                   FontWeight="Bold"
+                                                   FontSize="16"
+                                                   Margin="0,4,0,0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <TextBlock Text="1. PropertyChanged (сразу при каждой букве):" FontWeight="SemiBold"/>
+                                <TextBox Text="{Binding TriggerDemoText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,12"/>
+
+                                <TextBlock Text="2. LostFocus (только при потере фокуса / Tab):" FontWeight="SemiBold"/>
+                                <TextBox Text="{Binding TriggerDemoText, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Margin="0,3,0,12"/>
+
+                                <TextBlock Text="3. Explicit (только по кнопке вручную):" FontWeight="SemiBold"/>
+                                <DockPanel Margin="0,3,0,12">
+                                    <Button DockPanel.Dock="Right"
+                                            Content="Обновить вручную"
+                                            Style="{StaticResource AccentButtonStyle}"
+                                            Click="ExplicitUpdate_Click"
+                                            Margin="8,0,0,0"/>
+                                    <TextBox x:Name="ExplicitBox"
+                                             Text="{Binding TriggerDemoText, Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>
+                                </DockPanel>
+
+                                <TextBlock Text="4. Default (для TextBox.Text по умолчанию = LostFocus):" FontWeight="SemiBold"/>
+                                <TextBox Text="{Binding TriggerDemoText, Mode=TwoWay, UpdateSourceTrigger=Default}" Margin="0,3,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
         </TabControl>
     </DockPanel>
 </Window>

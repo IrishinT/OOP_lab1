@@ -17,8 +17,10 @@ namespace OOP_lab1.ViewModels
         private Student? _selectedStudent;
         private Student? _selectedSecondStudent;
         private Student? _clipboardStudent;
-        private Student? _activeStudent;
-        private int _copiedFromTable = 1;
+
+        private int _demoCounter = 1;
+        private string _bindingModeText = "Начальный текст";
+        private string _triggerDemoText = "Текст для проверки";
 
         private string _inputLastName = string.Empty;
         private string _inputGroup = string.Empty;
@@ -49,6 +51,11 @@ namespace OOP_lab1.ViewModels
                 StatusMessage = $"Выполнена команда: {param}";
             });
             ExitCommand = new RelayCommand(_ => Application.Current.Shutdown());
+
+            ChangeBindingTextCommand = new RelayCommand(_ =>
+            {
+                BindingModeText = $"Изменено из VM #{_demoCounter++}";
+            });
         }
 
         public ObservableCollection<string> Themes { get; } = new()
@@ -180,6 +187,20 @@ namespace OOP_lab1.ViewModels
         public ICommand ResetSettingsCommand { get; }
         public ICommand ShowActionMessageCommand { get; }
         public ICommand ExitCommand { get; }
+
+        public string BindingModeText
+        {
+            get => _bindingModeText;
+            set => SetProperty(ref _bindingModeText, value);
+        }
+
+        public string TriggerDemoText
+        {
+            get => _triggerDemoText;
+            set => SetProperty(ref _triggerDemoText, value);
+        }
+
+        public ICommand ChangeBindingTextCommand { get; }
 
         private bool CanAddStudent()
         {
