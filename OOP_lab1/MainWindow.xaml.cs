@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using OOP_lab1.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,13 +20,7 @@ namespace OOP_lab1
         public MainWindow()
         {
             InitializeComponent();
-
-            SampleGrid.ItemsSource = new[]
-            {
-                new { Фамилия = "Иванов", Группа = "ПИН.ИИ", Оценка = 5 },
-                new { Фамилия = "Петров", Группа = "ПИН.РИС", Оценка = 4 },
-                new { Фамилия = "Новиков", Группа = "ПИЭ", Оценка = 3 }
-            };
+            DataContext = new MainViewModel();
         }
     }
 }

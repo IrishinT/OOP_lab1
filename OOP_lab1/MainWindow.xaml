@@ -5,87 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOP_lab1"
         mc:Ignorable="d"
-        Title="Настройки приложения" Height="600" Width="1000">
-    <Grid Margin="10">
+        Title="Настройки приложения" Height="680" Width="1050"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}"
+        FontFamily="{Binding SelectedFontFamily}"
+        FontSize="{Binding SelectedFontSize}">
+
+    <DockPanel Margin="10">
+        <StatusBar DockPanel.Dock="Bottom"
+                   Margin="0,8,0,0"
+                   Background="{DynamicResource SurfaceBackgroundBrush}">
+            <StatusBarItem>
+                <TextBlock Text="{Binding StatusMessage}"/>
+            </StatusBarItem>
+        </StatusBar>
+
         <TabControl>
             <TabItem Header="Основное">
                 <StackPanel Margin="10">
-
                     <GroupBox Header="Персонализация" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
                             <TextBlock Text="Тема интерфейса:" Margin="0,0,0,5"/>
-                            <ComboBox x:Name="ThemeBox" Margin="0,0,0,15" SelectedIndex="0">
-                                <ComboBoxItem Content="Светлая (Light)"/>
-                                <ComboBoxItem Content="Темная (Dark)"/>
-                                <ComboBoxItem Content="Системная (System)"/>
-                            </ComboBox>
+                            <ComboBox ItemsSource="{Binding Themes}"
+                                      SelectedItem="{Binding SelectedTheme}"
+                                      Margin="0,0,0,15"/>
 
                             <TextBlock Text="Язык интерфейса:" Margin="0,0,0,5"/>
-                            <ComboBox SelectedIndex="0">
-                                <ComboBoxItem Content="Русский"/>
-                                <ComboBoxItem Content="Белорусский"/>
-                                <ComboBoxItem Content="Chinese"/>
-                                <ComboBoxItem Content="English"/>
-                                <ComboBoxItem Content="Deutch"/>
-                            </ComboBox>
+                            <ComboBox ItemsSource="{Binding Languages}"
+                                      SelectedItem="{Binding SelectedLanguage}"/>
                         </StackPanel>
                     </GroupBox>
 
-                    <GroupBox Header="Настройки шрифтов" Padding="10">
+                    <GroupBox Header="Настройки шрифтов" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
                             <TextBlock Text="Шрифт:" Margin="0,0,0,5"/>
-                            <ComboBox Margin="0,0,0,15" SelectedIndex="0">
-                                <ComboBoxItem Content="Segoe UI"/>
-                                <ComboBoxItem Content="Consolas"/>
-                                <ComboBoxItem Content="Tahoma"/>
-                                <ComboBoxItem Content="Arial"/>
-                                <ComboBoxItem Content="Calibri"/>
-                                <ComboBoxItem Content="Times New Roman"/>
-                            </ComboBox>
+                            <ComboBox ItemsSource="{Binding FontFamilies}"
+                                      SelectedItem="{Binding SelectedFontFamily}"
+                                      Margin="0,0,0,15"/>
 
                             <DockPanel Margin="0,0,0,5">
                                 <TextBlock Text="Размер шрифта: "/>
-                                <TextBlock Text="{Binding ElementName=FontSlider, Path=Value, StringFormat={}{0:0} pt}"/>
+                                <TextBlock Text="{Binding SelectedFontSize, StringFormat={}{0:0} pt}" Margin="0,0,15,0"/>
 
-                                <Slider x:Name="FontSlider" 
-                                        Minimum="10" 
-                                        Maximum="24" 
-                                        Value="14" 
-                                        TickFrequency="1" 
-                                        IsSnapToTickEnabled="True" 
+                                <Slider x:Name="FontSlider"
+                                        Minimum="10"
+                                        Maximum="24"
+                                        Value="{Binding SelectedFontSize, Mode=TwoWay}"
+                                        TickFrequency="1"
+                                        IsSnapToTickEnabled="True"
                                         TickPlacement="BottomRight"/>
                             </DockPanel>
                         </StackPanel>
                     </GroupBox>
+
+                    <Button Content="Сбросить настройки по умолчанию"
+                            Style="{StaticResource AccentButtonStyle}"
+                            Command="{Binding ResetSettingsCommand}"
+                            HorizontalAlignment="Left"/>
                 </StackPanel>
             </TabItem>
 
             <TabItem Header="Цветовая палитра">
                 <ScrollViewer>
                     <StackPanel Margin="10">
-
                         <TextBlock Margin="0,0,0,10">
                             <Run Text="Текущая тема: "/>
-                            <Run Text="{Binding ElementName=ThemeBox, Path=SelectedItem.Content}"/>
+                            <Run Text="{Binding SelectedTheme}" FontWeight="Bold"/>
                         </TextBlock>
 
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
                             <GroupBox Header="Основные цвета" Padding="10" Margin="0,0,10,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="100" Height="40" Fill="#3F51B5" Margin="0,0,10,0"/>
+                                    <Rectangle Width="100" Height="40" Fill="{StaticResource Primary500Brush}" Margin="0,0,10,0"/>
                                     <TextBlock Text="Основной" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                    <Rectangle Width="100" Height="40" Fill="#FF9800" Margin="0,0,10,0"/>
+                                    <Rectangle Width="100" Height="40" Fill="{StaticResource Accent500Brush}" Margin="0,0,10,0"/>
                                     <TextBlock Text="Акцентный" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </GroupBox>
 
                             <GroupBox Header="Индикаторные цвета" Padding="10">
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="100" Height="40" Fill="#4CAF50" Margin="0,0,10,0"/>
+                                    <Rectangle Width="100" Height="40" Fill="{StaticResource Success500Brush}" Margin="0,0,10,0"/>
                                     <TextBlock Text="Успех" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                    <Rectangle Width="100" Height="40" Fill="#F44336" Margin="0,0,10,0"/>
+                                    <Rectangle Width="100" Height="40" Fill="{StaticResource Error500Brush}" Margin="0,0,10,0"/>
                                     <TextBlock Text="Ошибка" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                                    <Rectangle Width="100" Height="40" Fill="#03A9F4" Margin="0,0,10,0"/>
+                                    <Rectangle Width="100" Height="40" Fill="{StaticResource Info500Brush}" Margin="0,0,10,0"/>
                                     <TextBlock Text="Информация" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </GroupBox>
@@ -94,52 +98,52 @@
                         <GroupBox Header="Оттенки: Основной" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#E8EAF6" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary50Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#E8EAF6" Width="90"/>
                                     <TextBlock Text="Primary 50"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#C5CAE9" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary100Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#C5CAE9" Width="90"/>
                                     <TextBlock Text="Primary 100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#9FA8DA" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary200Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#9FA8DA" Width="90"/>
                                     <TextBlock Text="Primary 200"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#7986CB" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary300Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#7986CB" Width="90"/>
                                     <TextBlock Text="Primary 300"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#5C6BC0" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary400Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#5C6BC0" Width="90"/>
                                     <TextBlock Text="Primary 400"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#3F51B5" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary500Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#3F51B5" Width="90"/>
                                     <TextBlock Text="Primary 500"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#3949AB" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary600Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#3949AB" Width="90"/>
                                     <TextBlock Text="Primary 600"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#303F9F" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary700Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#303F9F" Width="90"/>
                                     <TextBlock Text="Primary 700"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#283593" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary800Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#283593" Width="90"/>
                                     <TextBlock Text="Primary 800"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#1A237E" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Primary900Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#1A237E" Width="90"/>
                                     <TextBlock Text="Primary 900"/>
                                 </StackPanel>
@@ -149,52 +153,52 @@
                         <GroupBox Header="Оттенки: Акцентный" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#FFF3E0" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent50Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#FFF3E0" Width="90"/>
                                     <TextBlock Text="Accent 50"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#FFE0B2" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent100Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#FFE0B2" Width="90"/>
                                     <TextBlock Text="Accent 100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#FFCC80" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent200Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#FFCC80" Width="90"/>
                                     <TextBlock Text="Accent 200"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#FFB74D" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent300Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#FFB74D" Width="90"/>
                                     <TextBlock Text="Accent 300"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#FFA726" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent400Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#FFA726" Width="90"/>
                                     <TextBlock Text="Accent 400"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#FF9800" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent500Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#FF9800" Width="90"/>
                                     <TextBlock Text="Accent 500"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#FB8C00" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent600Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#FB8C00" Width="90"/>
                                     <TextBlock Text="Accent 600"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#F57C00" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent700Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#F57C00" Width="90"/>
                                     <TextBlock Text="Accent 700"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#EF6C00" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent800Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#EF6C00" Width="90"/>
                                     <TextBlock Text="Accent 800"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#E65100" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Accent900Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#E65100" Width="90"/>
                                     <TextBlock Text="Accent 900"/>
                                 </StackPanel>
@@ -204,52 +208,52 @@
                         <GroupBox Header="Оттенки: Успех" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#E8F5E9" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success50Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#E8F5E9" Width="90"/>
                                     <TextBlock Text="Success 50"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#C8E6C9" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success100Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#C8E6C9" Width="90"/>
                                     <TextBlock Text="Success 100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#A5D6A7" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success200Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#A5D6A7" Width="90"/>
                                     <TextBlock Text="Success 200"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#81C784" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success300Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#81C784" Width="90"/>
                                     <TextBlock Text="Success 300"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#66BB6A" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success400Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#66BB6A" Width="90"/>
                                     <TextBlock Text="Success 400"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#4CAF50" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success500Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#4CAF50" Width="90"/>
                                     <TextBlock Text="Success 500"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#43A047" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success600Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#43A047" Width="90"/>
                                     <TextBlock Text="Success 600"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#388E3C" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success700Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#388E3C" Width="90"/>
                                     <TextBlock Text="Success 700"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#2E7D32" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success800Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#2E7D32" Width="90"/>
                                     <TextBlock Text="Success 800"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#1B5E20" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Success900Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#1B5E20" Width="90"/>
                                     <TextBlock Text="Success 900"/>
                                 </StackPanel>
@@ -259,52 +263,52 @@
                         <GroupBox Header="Оттенки: Ошибка" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#FFEBEE" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error50Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#FFEBEE" Width="90"/>
                                     <TextBlock Text="Error 50"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#FFCDD2" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error100Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#FFCDD2" Width="90"/>
                                     <TextBlock Text="Error 100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#EF9A9A" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error200Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#EF9A9A" Width="90"/>
                                     <TextBlock Text="Error 200"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#E57373" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error300Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#E57373" Width="90"/>
                                     <TextBlock Text="Error 300"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#EF5350" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error400Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#EF5350" Width="90"/>
                                     <TextBlock Text="Error 400"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#F44336" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error500Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#F44336" Width="90"/>
                                     <TextBlock Text="Error 500"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#E53935" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error600Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#E53935" Width="90"/>
                                     <TextBlock Text="Error 600"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#D32F2F" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error700Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#D32F2F" Width="90"/>
                                     <TextBlock Text="Error 700"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#C62828" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error800Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#C62828" Width="90"/>
                                     <TextBlock Text="Error 800"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#B71C1C" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Error900Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#B71C1C" Width="90"/>
                                     <TextBlock Text="Error 900"/>
                                 </StackPanel>
@@ -314,52 +318,52 @@
                         <GroupBox Header="Оттенки: Информация" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#E1F5FE" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info50Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#E1F5FE" Width="90"/>
                                     <TextBlock Text="Info 50"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#B3E5FC" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info100Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#B3E5FC" Width="90"/>
                                     <TextBlock Text="Info 100"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#81D4FA" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info200Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#81D4FA" Width="90"/>
                                     <TextBlock Text="Info 200"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#4FC3F7" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info300Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#4FC3F7" Width="90"/>
                                     <TextBlock Text="Info 300"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#29B6F6" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info400Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#29B6F6" Width="90"/>
                                     <TextBlock Text="Info 400"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#03A9F4" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info500Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#03A9F4" Width="90"/>
                                     <TextBlock Text="Info 500"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#039BE5" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info600Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#039BE5" Width="90"/>
                                     <TextBlock Text="Info 600"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#0288D1" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info700Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#0288D1" Width="90"/>
                                     <TextBlock Text="Info 700"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#0277BD" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info800Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#0277BD" Width="90"/>
                                     <TextBlock Text="Info 800"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Rectangle Width="60" Height="25" Fill="#01579B" Margin="0,0,5,0"/>
+                                    <Rectangle Width="60" Height="25" Fill="{StaticResource Info900Brush}" Margin="0,0,5,0"/>
                                     <TextBlock Text="#01579B" Width="90"/>
                                     <TextBlock Text="Info 900"/>
                                 </StackPanel>
@@ -373,46 +377,46 @@
                 <ScrollViewer>
                     <StackPanel Margin="10">
 
-                        <Expander Header="Кнопки" IsExpanded="True" Margin="0,0,0,5">
+                        <Expander Header="Кнопки" Margin="0,0,0,5">
                             <StackPanel Margin="10">
                                 <TextBlock Text="Основной:" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <Button Content="Кнопка" Background="#3F51B5" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Background="#3F51B5" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Background="#3F51B5" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Background="#3F51B5" Foreground="White" Padding="8,4" IsEnabled="False"/>
+                                    <Button Content="Кнопка" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Основной" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Основной ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="Переключатель" Style="{StaticResource PrimaryToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="Кнопка" Style="{StaticResource PrimaryButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
 
                                 <TextBlock Text="Акцентный:" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <Button Content="Кнопка" Background="#FF9800" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Background="#FF9800" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Background="#FF9800" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Background="#FF9800" Foreground="White" Padding="8,4" IsEnabled="False"/>
+                                    <Button Content="Кнопка" Style="{StaticResource AccentButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Акцентный" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource AccentButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Акцентный ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="Переключатель" Style="{StaticResource AccentToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="Кнопка" Style="{StaticResource AccentButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
 
                                 <TextBlock Text="Успех:" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <Button Content="Кнопка" Background="#4CAF50" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Background="#4CAF50" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Background="#4CAF50" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Background="#4CAF50" Foreground="White" Padding="8,4" IsEnabled="False"/>
+                                    <Button Content="Кнопка" Style="{StaticResource SuccessButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Успех" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource SuccessButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Успех ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="Переключатель" Style="{StaticResource SuccessToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="Кнопка" Style="{StaticResource SuccessButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
 
                                 <TextBlock Text="Ошибка:" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <Button Content="Кнопка" Background="#F44336" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Background="#F44336" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Background="#F44336" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Background="#F44336" Foreground="White" Padding="8,4" IsEnabled="False"/>
+                                    <Button Content="Кнопка" Style="{StaticResource ErrorButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Ошибка" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource ErrorButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Ошибка ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="Переключатель" Style="{StaticResource ErrorToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="Кнопка" Style="{StaticResource ErrorButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
 
                                 <TextBlock Text="Информация:" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Content="Кнопка" Background="#03A9F4" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Background="#03A9F4" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Background="#03A9F4" Foreground="White" Padding="8,4" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Background="#03A9F4" Foreground="White" Padding="8,4" IsEnabled="False"/>
+                                    <Button Content="Кнопка" Style="{StaticResource InfoButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Информация" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource InfoButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Информация ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="Переключатель" Style="{StaticResource InfoToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="Кнопка" Style="{StaticResource InfoButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
@@ -468,20 +472,20 @@
                         <Expander Header="TextBlock, Label" Margin="0,0,0,5">
                             <StackPanel Orientation="Horizontal" Margin="10">
                                 <StackPanel Margin="0,0,60,0">
-                                    <TextBlock Text="TextBlock:" Foreground="Gray"/>
-                                    <TextBlock Text="Заголовок 1" FontSize="28" FontWeight="Bold"/>
-                                    <TextBlock Text="Заголовок 2" FontSize="22" FontWeight="Bold"/>
-                                    <TextBlock Text="Заголовок 3" FontSize="18" FontWeight="Bold"/>
-                                    <TextBlock Text="Обычный текст" FontSize="14"/>
-                                    <TextBlock Text="Подпись" FontSize="11" FontStyle="Italic" Foreground="Gray"/>
+                                    <TextBlock Text="TextBlock:" Style="{StaticResource CaptionTextStyle}"/>
+                                    <TextBlock Text="Заголовок 1" Style="{StaticResource Heading1Style}"/>
+                                    <TextBlock Text="Заголовок 2" Style="{StaticResource Heading2Style}"/>
+                                    <TextBlock Text="Заголовок 3" Style="{StaticResource Heading3Style}"/>
+                                    <TextBlock Text="Обычный текст"/>
+                                    <TextBlock Text="Подпись" Style="{StaticResource CaptionTextStyle}"/>
                                 </StackPanel>
                                 <StackPanel>
-                                    <Label Content="Label:" Foreground="Gray"/>
+                                    <Label Content="Label:" Foreground="{DynamicResource SecondaryTextBrush}"/>
                                     <Label Content="Заголовок 1" FontSize="28" FontWeight="Bold"/>
                                     <Label Content="Заголовок 2" FontSize="22" FontWeight="Bold"/>
                                     <Label Content="Заголовок 3" FontSize="18" FontWeight="Bold"/>
-                                    <Label Content="Обычный текст" FontSize="14"/>
-                                    <Label Content="Подпись" FontSize="11" FontStyle="Italic" Foreground="Gray"/>
+                                    <Label Content="Обычный текст"/>
+                                    <Label Content="Подпись" FontSize="11" FontStyle="Italic" Foreground="{DynamicResource SecondaryTextBrush}"/>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
@@ -498,23 +502,106 @@
                             </TreeView>
                         </Expander>
 
-                        <Expander Header="DataGrid" Margin="0,0,0,5">
-                            <DataGrid x:Name="SampleGrid" Margin="10" AutoGenerateColumns="True" IsReadOnly="True"/>
+                        <Expander Header="DataGrid (CRUD и копирование между таблицами)" IsExpanded="True" Margin="0,0,0,5">
+                            <StackPanel Margin="10">
+                                <ToolBarTray Margin="0,0,0,10">
+                                    <ToolBar>
+                                        <Button Content="📋 Копировать (из Таблицы 1)"
+                                                Command="{Binding CopyStudentCommand}"
+                                                Padding="8,4"/>
+                                        <Button Content="📥 Вставить (в Таблицу 2)"
+                                                Command="{Binding PasteStudentCommand}"
+                                                Padding="8,4"/>
+                                        <Separator/>
+                                        <Button Content="🗑 Удалить из Таблицы 2"
+                                                Command="{Binding DeleteSecondStudentCommand}"
+                                                Padding="8,4"/>
+                                    </ToolBar>
+                                </ToolBarTray>
+
+                                <WrapPanel Margin="0,0,0,10">
+                                    <StackPanel Width="160" Margin="0,0,10,5">
+                                        <TextBlock Text="Фамилия:"/>
+                                        <TextBox Text="{Binding InputLastName, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                    <StackPanel Width="130" Margin="0,0,10,5">
+                                        <TextBlock Text="Группа:"/>
+                                        <TextBox Text="{Binding InputGroup, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                    <StackPanel Width="80" Margin="0,0,15,5">
+                                        <TextBlock Text="Оценка (1-10):"/>
+                                        <TextBox Text="{Binding InputGrade, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0,0,0,5">
+                                        <Button Content="Добавить"
+                                                Style="{StaticResource SuccessButtonStyle}"
+                                                Command="{Binding AddStudentCommand}"
+                                                Margin="0,0,5,0"/>
+                                        <Button Content="Изменить"
+                                                Style="{StaticResource PrimaryButtonStyle}"
+                                                Command="{Binding EditStudentCommand}"
+                                                Margin="0,0,5,0"/>
+                                        <Button Content="Удалить"
+                                                Style="{StaticResource ErrorButtonStyle}"
+                                                Command="{Binding DeleteStudentCommand}"/>
+                                    </StackPanel>
+                                </WrapPanel>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="15"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="Таблица 1 (основная — можно редактировать):" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <DataGrid ItemsSource="{Binding Students}"
+                                                  SelectedItem="{Binding SelectedStudent}"
+                                                  AutoGenerateColumns="False"
+                                                  CanUserAddRows="False"
+                                                  Height="160">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                                <DataGridTextColumn Header="Группа" Binding="{Binding Group, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                                <DataGridTextColumn Header="Оценка" Binding="{Binding Grade, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock Text="Таблица 2 (результат вставки):" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <DataGrid ItemsSource="{Binding SecondStudents}"
+                                                  SelectedItem="{Binding SelectedSecondStudent}"
+                                                  AutoGenerateColumns="False"
+                                                  CanUserAddRows="False"
+                                                  IsReadOnly="True"
+                                                  Height="160">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                                                <DataGridTextColumn Header="Группа" Binding="{Binding Group}" Width="*"/>
+                                                <DataGridTextColumn Header="Оценка" Binding="{Binding Grade}" Width="80"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
                         </Expander>
 
                         <Expander Header="ProgressBar" Margin="0,0,0,5">
                             <StackPanel Margin="10">
-                                <ProgressBar Height="15" Margin="0,3" Value="20" Foreground="#3F51B5"/>
-                                <ProgressBar Height="15" Margin="0,3" Value="40" Foreground="#FF9800"/>
-                                <ProgressBar Height="15" Margin="0,3" Value="100" Foreground="#4CAF50"/>
-                                <ProgressBar Height="15" Margin="0,3" Value="60" Foreground="#F44336"/>
-                                <ProgressBar Height="15" Margin="0,3" Value="80" Foreground="#03A9F4"/>
+                                <ProgressBar Value="20" Style="{StaticResource PrimaryProgressBarStyle}"/>
+                                <ProgressBar Value="40" Style="{StaticResource AccentProgressBarStyle}"/>
+                                <ProgressBar Value="100" Style="{StaticResource SuccessProgressBarStyle}"/>
+                                <ProgressBar Value="60" Style="{StaticResource ErrorProgressBarStyle}"/>
+                                <ProgressBar Value="80" Style="{StaticResource InfoProgressBarStyle}"/>
                             </StackPanel>
                         </Expander>
 
                         <Expander Header="Всплывающие подсказки" Margin="0,0,0,5">
                             <StackPanel Orientation="Horizontal" Margin="10">
-                                <Button Content="Наведите курсор" Padding="8,4" Margin="0,0,10,0"
+                                <Button Content="Наведите курсор" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,10,0"
                                         ToolTip="Это простая всплывающая подсказка"/>
                                 <TextBox Width="150" Text="Поле ввода"
                                          ToolTip="Подсказка для текстового поля"/>
@@ -525,25 +612,25 @@
                             <StackPanel Margin="10">
                                 <Menu>
                                     <MenuItem Header="Файл">
-                                        <MenuItem Header="Создать"/>
-                                        <MenuItem Header="Открыть"/>
+                                        <MenuItem Header="Создать" Command="{Binding ShowActionMessageCommand}" CommandParameter="Меню: Создать"/>
+                                        <MenuItem Header="Открыть" Command="{Binding ShowActionMessageCommand}" CommandParameter="Меню: Открыть"/>
                                         <Separator/>
-                                        <MenuItem Header="Выход"/>
+                                        <MenuItem Header="Выход" Command="{Binding ExitCommand}"/>
                                     </MenuItem>
                                     <MenuItem Header="Правка">
-                                        <MenuItem Header="Копировать"/>
-                                        <MenuItem Header="Вставить"/>
+                                        <MenuItem Header="Копировать строку таблицы" Command="{Binding CopyStudentCommand}"/>
+                                        <MenuItem Header="Вставить во 2-ю таблицу" Command="{Binding PasteStudentCommand}"/>
                                     </MenuItem>
                                 </Menu>
 
-                                <Border Height="60" Margin="0,10,0,0" Background="#03A9F4">
+                                <Border Height="60" Margin="0,10,0,0" Background="{StaticResource Info500Brush}">
                                     <TextBlock Text="ПКМ для контекстного меню" Foreground="White"
                                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     <Border.ContextMenu>
                                         <ContextMenu>
-                                            <MenuItem Header="Копировать"/>
-                                            <MenuItem Header="Вставить"/>
-                                            <MenuItem Header="Удалить"/>
+                                            <MenuItem Header="Копировать строку таблицы" Command="{Binding CopyStudentCommand}"/>
+                                            <MenuItem Header="Вставить во 2-ю таблицу" Command="{Binding PasteStudentCommand}"/>
+                                            <MenuItem Header="Удалить выбранную строку" Command="{Binding DeleteStudentCommand}"/>
                                         </ContextMenu>
                                     </Border.ContextMenu>
                                 </Border>
@@ -557,33 +644,32 @@
             <TabItem Header="Контейнеры компоновки">
                 <ScrollViewer>
                     <WrapPanel Margin="10">
-
                         <GroupBox Header="StackPanel" Width="250" Height="200" Margin="5">
                             <StackPanel>
-                                <Rectangle Width="50" Height="25" Fill="#3F51B5" Margin="3"/>
-                                <Rectangle Width="50" Height="25" Fill="#FF9800" Margin="3"/>
-                                <Rectangle Width="50" Height="25" Fill="#4CAF50" Margin="3"/>
-                                <Rectangle Width="50" Height="25" Fill="#F44336" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Primary500Brush}" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Accent500Brush}" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Success500Brush}" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Error500Brush}" Margin="3"/>
                             </StackPanel>
                         </GroupBox>
 
                         <GroupBox Header="WrapPanel" Width="250" Height="200" Margin="5">
                             <WrapPanel>
-                                <Rectangle Width="50" Height="25" Fill="#3F51B5" Margin="3"/>
-                                <Rectangle Width="50" Height="25" Fill="#FF9800" Margin="3"/>
-                                <Rectangle Width="50" Height="25" Fill="#4CAF50" Margin="3"/>
-                                <Rectangle Width="50" Height="25" Fill="#F44336" Margin="3"/>
-                                <Rectangle Width="50" Height="25" Fill="#03A9F4" Margin="3"/>
-                                <Rectangle Width="50" Height="25" Fill="#3F51B5" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Primary500Brush}" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Accent500Brush}" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Success500Brush}" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Error500Brush}" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Info500Brush}" Margin="3"/>
+                                <Rectangle Width="50" Height="25" Fill="{StaticResource Primary500Brush}" Margin="3"/>
                             </WrapPanel>
                         </GroupBox>
 
                         <GroupBox Header="DockPanel" Width="250" Height="200" Margin="5">
                             <DockPanel>
-                                <Rectangle DockPanel.Dock="Top" Height="30" Fill="#3F51B5" Margin="3"/>
-                                <Rectangle DockPanel.Dock="Bottom" Height="30" Fill="#FF9800" Margin="3"/>
-                                <Rectangle DockPanel.Dock="Left" Width="40" Fill="#4CAF50" Margin="3"/>
-                                <Rectangle Fill="#F44336" Margin="3"/>
+                                <Rectangle DockPanel.Dock="Top" Height="30" Fill="{StaticResource Primary500Brush}" Margin="3"/>
+                                <Rectangle DockPanel.Dock="Bottom" Height="30" Fill="{StaticResource Accent500Brush}" Margin="3"/>
+                                <Rectangle DockPanel.Dock="Left" Width="40" Fill="{StaticResource Success500Brush}" Margin="3"/>
+                                <Rectangle Fill="{StaticResource Error500Brush}" Margin="3"/>
                             </DockPanel>
                         </GroupBox>
 
@@ -597,33 +683,32 @@
                                     <RowDefinition/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <Rectangle Grid.Row="0" Grid.Column="0" Fill="#3F51B5" Margin="3"/>
-                                <Rectangle Grid.Row="0" Grid.Column="1" Fill="#FF9800" Margin="3"/>
-                                <Rectangle Grid.Row="1" Grid.Column="0" Fill="#4CAF50" Margin="3"/>
-                                <Rectangle Grid.Row="1" Grid.Column="1" Fill="#F44336" Margin="3"/>
+                                <Rectangle Grid.Row="0" Grid.Column="0" Fill="{StaticResource Primary500Brush}" Margin="3"/>
+                                <Rectangle Grid.Row="0" Grid.Column="1" Fill="{StaticResource Accent500Brush}" Margin="3"/>
+                                <Rectangle Grid.Row="1" Grid.Column="0" Fill="{StaticResource Success500Brush}" Margin="3"/>
+                                <Rectangle Grid.Row="1" Grid.Column="1" Fill="{StaticResource Error500Brush}" Margin="3"/>
                             </Grid>
                         </GroupBox>
 
                         <GroupBox Header="UniformGrid" Width="250" Height="200" Margin="5">
                             <UniformGrid Rows="2" Columns="2">
-                                <Rectangle Fill="#3F51B5" Margin="3"/>
-                                <Rectangle Fill="#FF9800" Margin="3"/>
-                                <Rectangle Fill="#4CAF50" Margin="3"/>
-                                <Rectangle Fill="#F44336" Margin="3"/>
+                                <Rectangle Fill="{StaticResource Primary500Brush}" Margin="3"/>
+                                <Rectangle Fill="{StaticResource Accent500Brush}" Margin="3"/>
+                                <Rectangle Fill="{StaticResource Success500Brush}" Margin="3"/>
+                                <Rectangle Fill="{StaticResource Error500Brush}" Margin="3"/>
                             </UniformGrid>
                         </GroupBox>
 
                         <GroupBox Header="Canvas" Width="250" Height="200" Margin="5">
                             <Canvas>
-                                <Rectangle Canvas.Left="10" Canvas.Top="10" Width="80" Height="50" Fill="#3F51B5"/>
-                                <Rectangle Canvas.Left="50" Canvas.Top="50" Width="80" Height="50" Fill="#FF9800"/>
-                                <Rectangle Canvas.Left="90" Canvas.Top="90" Width="80" Height="50" Fill="#4CAF50"/>
+                                <Rectangle Canvas.Left="10" Canvas.Top="10" Width="80" Height="50" Fill="{StaticResource Primary500Brush}"/>
+                                <Rectangle Canvas.Left="50" Canvas.Top="50" Width="80" Height="50" Fill="{StaticResource Accent500Brush}"/>
+                                <Rectangle Canvas.Left="90" Canvas.Top="90" Width="80" Height="50" Fill="{StaticResource Success500Brush}"/>
                             </Canvas>
                         </GroupBox>
-
                     </WrapPanel>
                 </ScrollViewer>
             </TabItem>
         </TabControl>
-    </Grid>
+    </DockPanel>
 </Window>
