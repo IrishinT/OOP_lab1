@@ -17,6 +17,8 @@ namespace OOP_lab1.ViewModels
         private Student? _selectedStudent;
         private Student? _selectedSecondStudent;
         private Student? _clipboardStudent;
+        private Student? _activeStudent;
+        private int _copiedFromTable = 1;
 
         private string _inputLastName = string.Empty;
         private string _inputGroup = string.Empty;
@@ -40,7 +42,6 @@ namespace OOP_lab1.ViewModels
 
             CopyStudentCommand = new RelayCommand(_ => CopyStudent(), _ => SelectedStudent != null);
             PasteStudentCommand = new RelayCommand(_ => PasteStudent(), _ => _clipboardStudent != null);
-            DeleteSecondStudentCommand = new RelayCommand(_ => DeleteSecondStudent(), _ => SelectedSecondStudent != null);
 
             ResetSettingsCommand = new RelayCommand(_ => ResetSettings());
             ShowActionMessageCommand = new RelayCommand(param =>
@@ -59,7 +60,8 @@ namespace OOP_lab1.ViewModels
 
         public ObservableCollection<string> Languages { get; } = new()
         {
-            "Русский", "Белорусский", "Chinese", "English", "Deutch"
+            "Русский",
+            "English"
         };
 
         public ObservableCollection<string> FontFamilies { get; } = new()
@@ -86,7 +88,10 @@ namespace OOP_lab1.ViewModels
             set
             {
                 if (SetProperty(ref _selectedLanguage, value))
+                {
+                    ThemeService.ApplyLanguage(value);
                     StatusMessage = $"Язык интерфейса: {value}";
+                }
             }
         }
 
@@ -116,11 +121,17 @@ namespace OOP_lab1.ViewModels
             get => _selectedStudent;
             set
             {
-                if (SetProperty(ref _selectedStudent, value) && value != null)
+                if (SetProperty(ref _selectedStudent, value))
                 {
-                    InputLastName = value.LastName;
-                    InputGroup = value.Group;
-                    InputGrade = value.Grade.ToString();
+                    if (value != null)
+                    {
+                        _selectedSecondStudent = null;
+                        OnPropertyChanged(nameof(SelectedSecondStudent));
+                        InputLastName = value.LastName;
+                        InputGroup = value.Group;
+                        InputGrade = value.Grade.ToString();
+                    }
+                    CommandManager.InvalidateRequerySuggested();
                 }
             }
         }
@@ -128,7 +139,18 @@ namespace OOP_lab1.ViewModels
         public Student? SelectedSecondStudent
         {
             get => _selectedSecondStudent;
-            set => SetProperty(ref _selectedSecondStudent, value);
+            set
+            {
+                if (SetProperty(ref _selectedSecondStudent, value))
+                {
+                    if (value != null)
+                    {
+                        _selectedStudent = null;
+                        OnPropertyChanged(nameof(SelectedStudent));
+                    }
+                    CommandManager.InvalidateRequerySuggested();
+                }
+            }
         }
 
         public string InputLastName
@@ -198,14 +220,16 @@ namespace OOP_lab1.ViewModels
             string name = SelectedStudent.LastName;
             Students.Remove(SelectedStudent);
             SelectedStudent = null;
-            StatusMessage = $"Удалён студент: {name}";
+            StatusMessage = $"Удалён из Таблицы 1: {name}";
+            CommandManager.InvalidateRequerySuggested();
         }
 
         private void CopyStudent()
         {
             if (SelectedStudent == null) return;
             _clipboardStudent = SelectedStudent.Clone();
-            StatusMessage = $"Скопировано в буфер: {_clipboardStudent.LastName}";
+            StatusMessage = $"Скопировано из Таблицы 1: {_clipboardStudent.LastName}";
+            CommandManager.InvalidateRequerySuggested();
         }
 
         private void PasteStudent()
@@ -213,15 +237,8 @@ namespace OOP_lab1.ViewModels
             if (_clipboardStudent == null) return;
             var pasted = _clipboardStudent.Clone();
             SecondStudents.Add(pasted);
-            SelectedSecondStudent = pasted;
-            StatusMessage = $"Вставлено во вторую таблицу: {pasted.LastName}";
-        }
-
-        private void DeleteSecondStudent()
-        {
-            if (SelectedSecondStudent == null) return;
-            SecondStudents.Remove(SelectedSecondStudent);
-            SelectedSecondStudent = null;
+            StatusMessage = $"Вставлено в Таблицу 2: {pasted.LastName}";
+            CommandManager.InvalidateRequerySuggested();
         }
 
         private void ResetSettings()

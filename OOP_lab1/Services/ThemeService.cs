@@ -28,6 +28,22 @@ namespace OOP_lab1.Services
             }
         }
 
+        public static void ApplyLanguage(string languageName)
+        {
+            string uriString = languageName == "English"
+                ? "pack://application:,,,/ThemeLibrary;component/Localization/Lang.en.xaml"
+                : "pack://application:,,,/ThemeLibrary;component/Localization/Lang.ru.xaml";
+
+            var mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            if (mergedDictionaries.Count > 3)
+            {
+                mergedDictionaries[3] = new ResourceDictionary
+                {
+                    Source = new Uri(uriString, UriKind.Absolute)
+                };
+            }
+        }
+
         private static bool IsWindowsDarkTheme()
         {
             try

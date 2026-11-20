@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOP_lab1"
         mc:Ignorable="d"
-        Title="Настройки приложения" Height="680" Width="1050"
+        Title="{DynamicResource Loc_WindowTitle}"
+        Height="680" Width="1050"
         Background="{DynamicResource WindowBackgroundBrush}"
         Foreground="{DynamicResource PrimaryTextBrush}"
         FontFamily="{Binding SelectedFontFamily}"
@@ -21,30 +22,30 @@
         </StatusBar>
 
         <TabControl>
-            <TabItem Header="Основное">
+            <TabItem Header="{DynamicResource Loc_TabGeneral}">
                 <StackPanel Margin="10">
-                    <GroupBox Header="Персонализация" Margin="0,0,0,15" Padding="10">
+                    <GroupBox Header="{DynamicResource Loc_GroupPersonalization}" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
-                            <TextBlock Text="Тема интерфейса:" Margin="0,0,0,5"/>
+                            <TextBlock Text="{DynamicResource Loc_ThemeLabel}" Margin="0,0,0,5"/>
                             <ComboBox ItemsSource="{Binding Themes}"
                                       SelectedItem="{Binding SelectedTheme}"
                                       Margin="0,0,0,15"/>
 
-                            <TextBlock Text="Язык интерфейса:" Margin="0,0,0,5"/>
+                            <TextBlock Text="{DynamicResource Loc_LanguageLabel}" Margin="0,0,0,5"/>
                             <ComboBox ItemsSource="{Binding Languages}"
                                       SelectedItem="{Binding SelectedLanguage}"/>
                         </StackPanel>
                     </GroupBox>
 
-                    <GroupBox Header="Настройки шрифтов" Margin="0,0,0,15" Padding="10">
+                    <GroupBox Header="{DynamicResource Loc_GroupFonts}" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
-                            <TextBlock Text="Шрифт:" Margin="0,0,0,5"/>
+                            <TextBlock Text="{DynamicResource Loc_FontLabel}" Margin="0,0,0,5"/>
                             <ComboBox ItemsSource="{Binding FontFamilies}"
                                       SelectedItem="{Binding SelectedFontFamily}"
                                       Margin="0,0,0,15"/>
 
                             <DockPanel Margin="0,0,0,5">
-                                <TextBlock Text="Размер шрифта: "/>
+                                <TextBlock Text="{DynamicResource Loc_FontSizeLabel}"/>
                                 <TextBlock Text="{Binding SelectedFontSize, StringFormat={}{0:0} pt}" Margin="0,0,15,0"/>
 
                                 <Slider x:Name="FontSlider"
@@ -58,44 +59,44 @@
                         </StackPanel>
                     </GroupBox>
 
-                    <Button Content="Сбросить настройки по умолчанию"
+                    <Button Content="{DynamicResource Loc_ResetSettings}"
                             Style="{StaticResource AccentButtonStyle}"
                             Command="{Binding ResetSettingsCommand}"
                             HorizontalAlignment="Left"/>
                 </StackPanel>
             </TabItem>
 
-            <TabItem Header="Цветовая палитра">
+            <TabItem Header="{DynamicResource Loc_TabPalette}">
                 <ScrollViewer>
                     <StackPanel Margin="10">
-                        <TextBlock Margin="0,0,0,10">
-                            <Run Text="Текущая тема: "/>
-                            <Run Text="{Binding SelectedTheme}" FontWeight="Bold"/>
-                        </TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="{DynamicResource Loc_CurrentTheme}"/>
+                            <TextBlock Text="{Binding SelectedTheme}" FontWeight="Bold"/>
+                        </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                            <GroupBox Header="Основные цвета" Padding="10" Margin="0,0,10,0">
+                            <GroupBox Header="{DynamicResource Loc_GroupMainColors}" Padding="10" Margin="0,0,10,0">
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Width="100" Height="40" Fill="{StaticResource Primary500Brush}" Margin="0,0,10,0"/>
-                                    <TextBlock Text="Основной" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                    <TextBlock Text="{DynamicResource Loc_ColorPrimary}" VerticalAlignment="Center" Margin="0,0,20,0"/>
                                     <Rectangle Width="100" Height="40" Fill="{StaticResource Accent500Brush}" Margin="0,0,10,0"/>
-                                    <TextBlock Text="Акцентный" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{DynamicResource Loc_ColorAccent}" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </GroupBox>
 
-                            <GroupBox Header="Индикаторные цвета" Padding="10">
+                            <GroupBox Header="{DynamicResource Loc_GroupIndicatorColors}" Padding="10">
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Width="100" Height="40" Fill="{StaticResource Success500Brush}" Margin="0,0,10,0"/>
-                                    <TextBlock Text="Успех" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                    <TextBlock Text="{DynamicResource Loc_ColorSuccess}" VerticalAlignment="Center" Margin="0,0,20,0"/>
                                     <Rectangle Width="100" Height="40" Fill="{StaticResource Error500Brush}" Margin="0,0,10,0"/>
-                                    <TextBlock Text="Ошибка" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                                    <TextBlock Text="{DynamicResource Loc_ColorError}" VerticalAlignment="Center" Margin="0,0,20,0"/>
                                     <Rectangle Width="100" Height="40" Fill="{StaticResource Info500Brush}" Margin="0,0,10,0"/>
-                                    <TextBlock Text="Информация" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{DynamicResource Loc_ColorInfo}" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </GroupBox>
                         </StackPanel>
 
-                        <GroupBox Header="Оттенки: Основной" Margin="0,0,0,10" Padding="10">
+                        <GroupBox Header="{DynamicResource Loc_ShadesPrimary}" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Width="60" Height="25" Fill="{StaticResource Primary50Brush}" Margin="0,0,5,0"/>
@@ -150,7 +151,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Header="Оттенки: Акцентный" Margin="0,0,0,10" Padding="10">
+                        <GroupBox Header="{DynamicResource Loc_ShadesAccent}" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Width="60" Height="25" Fill="{StaticResource Accent50Brush}" Margin="0,0,5,0"/>
@@ -205,7 +206,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Header="Оттенки: Успех" Margin="0,0,0,10" Padding="10">
+                        <GroupBox Header="{DynamicResource Loc_ShadesSuccess}" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Width="60" Height="25" Fill="{StaticResource Success50Brush}" Margin="0,0,5,0"/>
@@ -260,7 +261,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Header="Оттенки: Ошибка" Margin="0,0,0,10" Padding="10">
+                        <GroupBox Header="{DynamicResource Loc_ShadesError}" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Width="60" Height="25" Fill="{StaticResource Error50Brush}" Margin="0,0,5,0"/>
@@ -315,7 +316,7 @@
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Header="Оттенки: Информация" Margin="0,0,0,10" Padding="10">
+                        <GroupBox Header="{DynamicResource Loc_ShadesInfo}" Margin="0,0,0,10" Padding="10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Rectangle Width="60" Height="25" Fill="{StaticResource Info50Brush}" Margin="0,0,5,0"/>
@@ -373,50 +374,50 @@
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="Элементы управления">
+            <TabItem Header="{DynamicResource Loc_TabControls}">
                 <ScrollViewer>
                     <StackPanel Margin="10">
 
-                        <Expander Header="Кнопки" Margin="0,0,0,5">
+                        <Expander Header="{DynamicResource Loc_ExpButtons}" Margin="0,0,0,5">
                             <StackPanel Margin="10">
-                                <TextBlock Text="Основной:" FontWeight="Bold"/>
+                                <TextBlock Text="{DynamicResource Loc_PrimaryColon}" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <Button Content="Кнопка" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Основной" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Основной ✔" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Style="{StaticResource PrimaryToggleButtonStyle}" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Style="{StaticResource PrimaryButtonStyle}" IsEnabled="False"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Primary" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Primary ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="{DynamicResource Loc_ToggleText}" Style="{StaticResource PrimaryToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource PrimaryButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
 
-                                <TextBlock Text="Акцентный:" FontWeight="Bold"/>
+                                <TextBlock Text="{DynamicResource Loc_AccentColon}" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <Button Content="Кнопка" Style="{StaticResource AccentButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Акцентный" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Style="{StaticResource AccentButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Акцентный ✔" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Style="{StaticResource AccentToggleButtonStyle}" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Style="{StaticResource AccentButtonStyle}" IsEnabled="False"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource AccentButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Accent" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource AccentButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Accent ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="{DynamicResource Loc_ToggleText}" Style="{StaticResource AccentToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource AccentButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
 
-                                <TextBlock Text="Успех:" FontWeight="Bold"/>
+                                <TextBlock Text="{DynamicResource Loc_SuccessColon}" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <Button Content="Кнопка" Style="{StaticResource SuccessButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Успех" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Style="{StaticResource SuccessButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Успех ✔" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Style="{StaticResource SuccessToggleButtonStyle}" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Style="{StaticResource SuccessButtonStyle}" IsEnabled="False"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource SuccessButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Success" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource SuccessButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Success ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="{DynamicResource Loc_ToggleText}" Style="{StaticResource SuccessToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource SuccessButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
 
-                                <TextBlock Text="Ошибка:" FontWeight="Bold"/>
+                                <TextBlock Text="{DynamicResource Loc_ErrorColon}" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <Button Content="Кнопка" Style="{StaticResource ErrorButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Ошибка" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Style="{StaticResource ErrorButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Ошибка ✔" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Style="{StaticResource ErrorToggleButtonStyle}" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Style="{StaticResource ErrorButtonStyle}" IsEnabled="False"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource ErrorButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Error" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource ErrorButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Error ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="{DynamicResource Loc_ToggleText}" Style="{StaticResource ErrorToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource ErrorButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
 
-                                <TextBlock Text="Информация:" FontWeight="Bold"/>
+                                <TextBlock Text="{DynamicResource Loc_InfoColon}" FontWeight="Bold"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Content="Кнопка" Style="{StaticResource InfoButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Информация" Margin="0,0,5,0"/>
-                                    <Button Content="✔" Style="{StaticResource InfoButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Информация ✔" Margin="0,0,5,0"/>
-                                    <ToggleButton Content="Переключатель" Style="{StaticResource InfoToggleButtonStyle}" Margin="0,0,5,0"/>
-                                    <Button Content="Кнопка" Style="{StaticResource InfoButtonStyle}" IsEnabled="False"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource InfoButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Info" Margin="0,0,5,0"/>
+                                    <Button Content="✔" Style="{StaticResource InfoButtonStyle}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Info ✔" Margin="0,0,5,0"/>
+                                    <ToggleButton Content="{DynamicResource Loc_ToggleText}" Style="{StaticResource InfoToggleButtonStyle}" Margin="0,0,5,0"/>
+                                    <Button Content="{DynamicResource Loc_BtnText}" Style="{StaticResource InfoButtonStyle}" IsEnabled="False"/>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
@@ -426,27 +427,27 @@
                                 <StackPanel Width="150" Margin="0,0,15,0">
                                     <TextBlock Text="ListBox"/>
                                     <ListBox Height="80">
-                                        <ListBoxItem Content="Элемент 1" IsSelected="True"/>
-                                        <ListBoxItem Content="Элемент 2"/>
-                                        <ListBoxItem Content="Неактивный" IsEnabled="False"/>
+                                        <ListBoxItem Content="{DynamicResource Loc_ListItem1}" IsSelected="True"/>
+                                        <ListBoxItem Content="{DynamicResource Loc_ListItem2}"/>
+                                        <ListBoxItem Content="{DynamicResource Loc_DisabledItem}" IsEnabled="False"/>
                                     </ListBox>
                                 </StackPanel>
 
                                 <StackPanel Width="150" Margin="0,0,15,0">
                                     <TextBlock Text="ComboBox"/>
                                     <ComboBox SelectedIndex="0" Margin="0,0,0,5">
-                                        <ComboBoxItem Content="Вариант 1"/>
-                                        <ComboBoxItem Content="Вариант 2"/>
+                                        <ComboBoxItem Content="{DynamicResource Loc_Option1}"/>
+                                        <ComboBoxItem Content="{DynamicResource Loc_Option2}"/>
                                     </ComboBox>
                                     <ComboBox SelectedIndex="0" IsEnabled="False">
-                                        <ComboBoxItem Content="Неактивный"/>
+                                        <ComboBoxItem Content="{DynamicResource Loc_DisabledItem}"/>
                                     </ComboBox>
                                 </StackPanel>
 
                                 <StackPanel Width="150" Margin="0,0,15,0">
                                     <TextBlock Text="TextBox"/>
-                                    <TextBox Text="Обычный" Margin="0,0,0,5"/>
-                                    <TextBox Text="Неактивный" IsEnabled="False"/>
+                                    <TextBox Text="{DynamicResource Loc_NormalText}" Margin="0,0,0,5"/>
+                                    <TextBox Text="{DynamicResource Loc_DisabledItem}" IsEnabled="False"/>
                                 </StackPanel>
 
                                 <StackPanel Width="150" Margin="0,0,15,0">
@@ -460,8 +461,8 @@
                                     <RichTextBox Height="80">
                                         <FlowDocument>
                                             <Paragraph>
-                                                <Bold>Жирный</Bold> и
-                                                <Italic>курсив</Italic> текст.
+                                                <Bold>Bold</Bold> /
+                                                <Italic>Italic</Italic>
                                             </Paragraph>
                                         </FlowDocument>
                                     </RichTextBox>
@@ -473,76 +474,73 @@
                             <StackPanel Orientation="Horizontal" Margin="10">
                                 <StackPanel Margin="0,0,60,0">
                                     <TextBlock Text="TextBlock:" Style="{StaticResource CaptionTextStyle}"/>
-                                    <TextBlock Text="Заголовок 1" Style="{StaticResource Heading1Style}"/>
-                                    <TextBlock Text="Заголовок 2" Style="{StaticResource Heading2Style}"/>
-                                    <TextBlock Text="Заголовок 3" Style="{StaticResource Heading3Style}"/>
-                                    <TextBlock Text="Обычный текст"/>
-                                    <TextBlock Text="Подпись" Style="{StaticResource CaptionTextStyle}"/>
+                                    <TextBlock Text="{DynamicResource Loc_Heading1}" Style="{StaticResource Heading1Style}"/>
+                                    <TextBlock Text="{DynamicResource Loc_Heading2}" Style="{StaticResource Heading2Style}"/>
+                                    <TextBlock Text="{DynamicResource Loc_Heading3}" Style="{StaticResource Heading3Style}"/>
+                                    <TextBlock Text="{DynamicResource Loc_BodyText}"/>
+                                    <TextBlock Text="{DynamicResource Loc_CaptionText}" Style="{StaticResource CaptionTextStyle}"/>
                                 </StackPanel>
                                 <StackPanel>
                                     <Label Content="Label:" Foreground="{DynamicResource SecondaryTextBrush}"/>
-                                    <Label Content="Заголовок 1" FontSize="28" FontWeight="Bold"/>
-                                    <Label Content="Заголовок 2" FontSize="22" FontWeight="Bold"/>
-                                    <Label Content="Заголовок 3" FontSize="18" FontWeight="Bold"/>
-                                    <Label Content="Обычный текст"/>
-                                    <Label Content="Подпись" FontSize="11" FontStyle="Italic" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                    <Label Content="{DynamicResource Loc_Heading1}" FontSize="28" FontWeight="Bold"/>
+                                    <Label Content="{DynamicResource Loc_Heading2}" FontSize="22" FontWeight="Bold"/>
+                                    <Label Content="{DynamicResource Loc_Heading3}" FontSize="18" FontWeight="Bold"/>
+                                    <Label Content="{DynamicResource Loc_BodyText}"/>
+                                    <Label Content="{DynamicResource Loc_CaptionText}" FontSize="11" FontStyle="Italic" Foreground="{DynamicResource SecondaryTextBrush}"/>
                                 </StackPanel>
                             </StackPanel>
                         </Expander>
 
                         <Expander Header="TreeView" Margin="0,0,0,5">
                             <TreeView Margin="10" Height="120">
-                                <TreeViewItem Header="Документы" IsExpanded="True">
-                                    <TreeViewItem Header="Отчёт.docx"/>
-                                    <TreeViewItem Header="Лаб1.pdf"/>
+                                <TreeViewItem Header="{DynamicResource Loc_TreeDocs}" IsExpanded="True">
+                                    <TreeViewItem Header="Report.docx"/>
+                                    <TreeViewItem Header="Lab1.pdf"/>
                                 </TreeViewItem>
-                                <TreeViewItem Header="Изображения">
+                                <TreeViewItem Header="{DynamicResource Loc_TreeImages}">
                                     <TreeViewItem Header="photo.png"/>
                                 </TreeViewItem>
                             </TreeView>
                         </Expander>
 
-                        <Expander Header="DataGrid (CRUD и копирование между таблицами)" IsExpanded="True" Margin="0,0,0,5">
+                        <Expander Header="{DynamicResource Loc_ExpDataGrid}" IsExpanded="True" Margin="0,0,0,5">
                             <StackPanel Margin="10">
                                 <ToolBarTray Margin="0,0,0,10">
-                                    <ToolBar>
-                                        <Button Content="📋 Копировать (из Таблицы 1)"
-                                                Command="{Binding CopyStudentCommand}"
-                                                Padding="8,4"/>
-                                        <Button Content="📥 Вставить (в Таблицу 2)"
-                                                Command="{Binding PasteStudentCommand}"
-                                                Padding="8,4"/>
-                                        <Separator/>
-                                        <Button Content="🗑 Удалить из Таблицы 2"
-                                                Command="{Binding DeleteSecondStudentCommand}"
-                                                Padding="8,4"/>
+                                    <ToolBar Margin="0,0,0,10">
+                                        <Button Content="{DynamicResource Loc_Copy}"
+                                            Style="{StaticResource InfoButtonStyle}"
+                                            Command="{Binding CopyStudentCommand}"
+                                            Margin="0,0,6,0"/>
+                                        <Button Content="{DynamicResource Loc_Paste}"
+                                            Style="{StaticResource SuccessButtonStyle}"
+                                            Command="{Binding PasteStudentCommand}"/>
                                     </ToolBar>
                                 </ToolBarTray>
 
                                 <WrapPanel Margin="0,0,0,10">
                                     <StackPanel Width="160" Margin="0,0,10,5">
-                                        <TextBlock Text="Фамилия:"/>
+                                        <TextBlock Text="{DynamicResource Loc_ColLastNameColon}"/>
                                         <TextBox Text="{Binding InputLastName, UpdateSourceTrigger=PropertyChanged}"/>
                                     </StackPanel>
                                     <StackPanel Width="130" Margin="0,0,10,5">
-                                        <TextBlock Text="Группа:"/>
+                                        <TextBlock Text="{DynamicResource Loc_ColGroupColon}"/>
                                         <TextBox Text="{Binding InputGroup, UpdateSourceTrigger=PropertyChanged}"/>
                                     </StackPanel>
-                                    <StackPanel Width="80" Margin="0,0,15,5">
-                                        <TextBlock Text="Оценка (1-10):"/>
+                                    <StackPanel Width="90" Margin="0,0,15,5">
+                                        <TextBlock Text="{DynamicResource Loc_ColGradeRange}"/>
                                         <TextBox Text="{Binding InputGrade, UpdateSourceTrigger=PropertyChanged}"/>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0,0,0,5">
-                                        <Button Content="Добавить"
+                                        <Button Content="{DynamicResource Loc_Add}"
                                                 Style="{StaticResource SuccessButtonStyle}"
                                                 Command="{Binding AddStudentCommand}"
                                                 Margin="0,0,5,0"/>
-                                        <Button Content="Изменить"
+                                        <Button Content="{DynamicResource Loc_Edit}"
                                                 Style="{StaticResource PrimaryButtonStyle}"
                                                 Command="{Binding EditStudentCommand}"
                                                 Margin="0,0,5,0"/>
-                                        <Button Content="Удалить"
+                                        <Button Content="{DynamicResource Loc_Delete}"
                                                 Style="{StaticResource ErrorButtonStyle}"
                                                 Command="{Binding DeleteStudentCommand}"/>
                                     </StackPanel>
@@ -556,22 +554,34 @@
                                     </Grid.ColumnDefinitions>
 
                                     <StackPanel Grid.Column="0">
-                                        <TextBlock Text="Таблица 1 (основная — можно редактировать):" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBlock Text="{DynamicResource Loc_Table1Title}" FontWeight="Bold" Margin="0,0,0,5"/>
                                         <DataGrid ItemsSource="{Binding Students}"
                                                   SelectedItem="{Binding SelectedStudent}"
                                                   AutoGenerateColumns="False"
                                                   CanUserAddRows="False"
                                                   Height="160">
                                             <DataGrid.Columns>
-                                                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-                                                <DataGridTextColumn Header="Группа" Binding="{Binding Group, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
-                                                <DataGridTextColumn Header="Оценка" Binding="{Binding Grade, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                                                <DataGridTextColumn Binding="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" Width="*">
+                                                    <DataGridTextColumn.Header>
+                                                        <TextBlock Text="{DynamicResource Loc_ColLastName}"/>
+                                                    </DataGridTextColumn.Header>
+                                                </DataGridTextColumn>
+                                                <DataGridTextColumn Binding="{Binding Group, UpdateSourceTrigger=PropertyChanged}" Width="*">
+                                                    <DataGridTextColumn.Header>
+                                                        <TextBlock Text="{DynamicResource Loc_ColGroup}"/>
+                                                    </DataGridTextColumn.Header>
+                                                </DataGridTextColumn>
+                                                <DataGridTextColumn Binding="{Binding Grade, UpdateSourceTrigger=PropertyChanged}" Width="80">
+                                                    <DataGridTextColumn.Header>
+                                                        <TextBlock Text="{DynamicResource Loc_ColGrade}"/>
+                                                    </DataGridTextColumn.Header>
+                                                </DataGridTextColumn>
                                             </DataGrid.Columns>
                                         </DataGrid>
                                     </StackPanel>
 
                                     <StackPanel Grid.Column="2">
-                                        <TextBlock Text="Таблица 2 (результат вставки):" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBlock Text="{DynamicResource Loc_Table2Title}" FontWeight="Bold" Margin="0,0,0,5"/>
                                         <DataGrid ItemsSource="{Binding SecondStudents}"
                                                   SelectedItem="{Binding SelectedSecondStudent}"
                                                   AutoGenerateColumns="False"
@@ -579,9 +589,21 @@
                                                   IsReadOnly="True"
                                                   Height="160">
                                             <DataGrid.Columns>
-                                                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
-                                                <DataGridTextColumn Header="Группа" Binding="{Binding Group}" Width="*"/>
-                                                <DataGridTextColumn Header="Оценка" Binding="{Binding Grade}" Width="80"/>
+                                                <DataGridTextColumn Binding="{Binding LastName}" Width="*">
+                                                    <DataGridTextColumn.Header>
+                                                        <TextBlock Text="{DynamicResource Loc_ColLastName}"/>
+                                                    </DataGridTextColumn.Header>
+                                                </DataGridTextColumn>
+                                                <DataGridTextColumn Binding="{Binding Group}" Width="*">
+                                                    <DataGridTextColumn.Header>
+                                                        <TextBlock Text="{DynamicResource Loc_ColGroup}"/>
+                                                    </DataGridTextColumn.Header>
+                                                </DataGridTextColumn>
+                                                <DataGridTextColumn Binding="{Binding Grade}" Width="80">
+                                                    <DataGridTextColumn.Header>
+                                                        <TextBlock Text="{DynamicResource Loc_ColGrade}"/>
+                                                    </DataGridTextColumn.Header>
+                                                </DataGridTextColumn>
                                             </DataGrid.Columns>
                                         </DataGrid>
                                     </StackPanel>
@@ -599,38 +621,38 @@
                             </StackPanel>
                         </Expander>
 
-                        <Expander Header="Всплывающие подсказки" Margin="0,0,0,5">
+                        <Expander Header="{DynamicResource Loc_ExpTooltips}" Margin="0,0,0,5">
                             <StackPanel Orientation="Horizontal" Margin="10">
-                                <Button Content="Наведите курсор" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,10,0"
-                                        ToolTip="Это простая всплывающая подсказка"/>
-                                <TextBox Width="150" Text="Поле ввода"
-                                         ToolTip="Подсказка для текстового поля"/>
+                                <Button Content="{DynamicResource Loc_HoverMe}" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,10,0"
+                                        ToolTip="{DynamicResource Loc_TooltipSimple}"/>
+                                <TextBox Width="150" Text="{DynamicResource Loc_InputField}"
+                                         ToolTip="{DynamicResource Loc_TooltipInput}"/>
                             </StackPanel>
                         </Expander>
 
-                        <Expander Header="Меню и контекстное меню" Margin="0,0,0,5">
+                        <Expander Header="{DynamicResource Loc_ExpMenus}" Margin="0,0,0,5">
                             <StackPanel Margin="10">
                                 <Menu>
-                                    <MenuItem Header="Файл">
-                                        <MenuItem Header="Создать" Command="{Binding ShowActionMessageCommand}" CommandParameter="Меню: Создать"/>
-                                        <MenuItem Header="Открыть" Command="{Binding ShowActionMessageCommand}" CommandParameter="Меню: Открыть"/>
+                                    <MenuItem Header="{DynamicResource Loc_MenuFile}">
+                                        <MenuItem Header="{DynamicResource Loc_MenuNew}" Command="{Binding ShowActionMessageCommand}" CommandParameter="New"/>
+                                        <MenuItem Header="{DynamicResource Loc_MenuOpen}" Command="{Binding ShowActionMessageCommand}" CommandParameter="Open"/>
                                         <Separator/>
-                                        <MenuItem Header="Выход" Command="{Binding ExitCommand}"/>
+                                        <MenuItem Header="{DynamicResource Loc_MenuExit}" Command="{Binding ExitCommand}"/>
                                     </MenuItem>
-                                    <MenuItem Header="Правка">
-                                        <MenuItem Header="Копировать строку таблицы" Command="{Binding CopyStudentCommand}"/>
-                                        <MenuItem Header="Вставить во 2-ю таблицу" Command="{Binding PasteStudentCommand}"/>
+                                    <MenuItem Header="{DynamicResource Loc_MenuEdit}">
+                                        <MenuItem Header="{DynamicResource Loc_MenuCopyRow}" Command="{Binding CopyStudentCommand}"/>
+                                        <MenuItem Header="{DynamicResource Loc_MenuPasteRow}" Command="{Binding PasteStudentCommand}"/>
                                     </MenuItem>
                                 </Menu>
 
                                 <Border Height="60" Margin="0,10,0,0" Background="{StaticResource Info500Brush}">
-                                    <TextBlock Text="ПКМ для контекстного меню" Foreground="White"
+                                    <TextBlock Text="{DynamicResource Loc_RightClickHint}" Foreground="White"
                                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     <Border.ContextMenu>
                                         <ContextMenu>
-                                            <MenuItem Header="Копировать строку таблицы" Command="{Binding CopyStudentCommand}"/>
-                                            <MenuItem Header="Вставить во 2-ю таблицу" Command="{Binding PasteStudentCommand}"/>
-                                            <MenuItem Header="Удалить выбранную строку" Command="{Binding DeleteStudentCommand}"/>
+                                            <MenuItem Header="{DynamicResource Loc_MenuCopyRow}" Command="{Binding CopyStudentCommand}"/>
+                                            <MenuItem Header="{DynamicResource Loc_MenuPasteRow}" Command="{Binding PasteStudentCommand}"/>
+                                            <MenuItem Header="{DynamicResource Loc_MenuDeleteRow}" Command="{Binding DeleteStudentCommand}"/>
                                         </ContextMenu>
                                     </Border.ContextMenu>
                                 </Border>
@@ -641,7 +663,7 @@
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="Контейнеры компоновки">
+            <TabItem Header="{DynamicResource Loc_TabContainers}">
                 <ScrollViewer>
                     <WrapPanel Margin="10">
                         <GroupBox Header="StackPanel" Width="250" Height="200" Margin="5">

@@ -1,0 +1,90 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:String x:Key="Loc_WindowTitle">Настройки приложения</sys:String>
+    <sys:String x:Key="Loc_TabGeneral">Основное</sys:String>
+    <sys:String x:Key="Loc_TabPalette">Цветовая палитра</sys:String>
+    <sys:String x:Key="Loc_TabControls">Элементы управления</sys:String>
+    <sys:String x:Key="Loc_TabContainers">Контейнеры компоновки</sys:String>
+    <sys:String x:Key="Loc_TabBindings">Привязки (Binding)</sys:String>
+
+    <sys:String x:Key="Loc_GroupPersonalization">Персонализация</sys:String>
+    <sys:String x:Key="Loc_ThemeLabel">Тема интерфейса:</sys:String>
+    <sys:String x:Key="Loc_LanguageLabel">Язык интерфейса:</sys:String>
+    <sys:String x:Key="Loc_GroupFonts">Настройки шрифтов</sys:String>
+    <sys:String x:Key="Loc_FontLabel">Шрифт:</sys:String>
+    <sys:String x:Key="Loc_FontSizeLabel">Размер шрифта:</sys:String>
+    <sys:String x:Key="Loc_ResetSettings">Сбросить настройки по умолчанию</sys:String>
+
+    <sys:String x:Key="Loc_CurrentTheme">Текущая тема:</sys:String>
+    <sys:String x:Key="Loc_GroupMainColors">Основные цвета</sys:String>
+    <sys:String x:Key="Loc_GroupIndicatorColors">Индикаторные цвета</sys:String>
+    <sys:String x:Key="Loc_ColorPrimary">Основной</sys:String>
+    <sys:String x:Key="Loc_ColorAccent">Акцентный</sys:String>
+    <sys:String x:Key="Loc_ColorSuccess">Успех</sys:String>
+    <sys:String x:Key="Loc_ColorError">Ошибка</sys:String>
+    <sys:String x:Key="Loc_ColorInfo">Информация</sys:String>
+    <sys:String x:Key="Loc_ShadesPrimary">Оттенки: Основной</sys:String>
+    <sys:String x:Key="Loc_ShadesAccent">Оттенки: Акцентный</sys:String>
+    <sys:String x:Key="Loc_ShadesSuccess">Оттенки: Успех</sys:String>
+    <sys:String x:Key="Loc_ShadesError">Оттенки: Ошибка</sys:String>
+    <sys:String x:Key="Loc_ShadesInfo">Оттенки: Информация</sys:String>
+
+    <sys:String x:Key="Loc_ExpButtons">Кнопки</sys:String>
+    <sys:String x:Key="Loc_PrimaryColon">Основной:</sys:String>
+    <sys:String x:Key="Loc_AccentColon">Акцентный:</sys:String>
+    <sys:String x:Key="Loc_SuccessColon">Успех:</sys:String>
+    <sys:String x:Key="Loc_ErrorColon">Ошибка:</sys:String>
+    <sys:String x:Key="Loc_InfoColon">Информация:</sys:String>
+    <sys:String x:Key="Loc_BtnText">Кнопка</sys:String>
+    <sys:String x:Key="Loc_ToggleText">Переключатель</sys:String>
+
+    <sys:String x:Key="Loc_ListItem1">Элемент 1</sys:String>
+    <sys:String x:Key="Loc_ListItem2">Элемент 2</sys:String>
+    <sys:String x:Key="Loc_DisabledItem">Неактивный</sys:String>
+    <sys:String x:Key="Loc_Option1">Вариант 1</sys:String>
+    <sys:String x:Key="Loc_Option2">Вариант 2</sys:String>
+    <sys:String x:Key="Loc_NormalText">Обычный</sys:String>
+
+    <sys:String x:Key="Loc_Heading1">Заголовок 1</sys:String>
+    <sys:String x:Key="Loc_Heading2">Заголовок 2</sys:String>
+    <sys:String x:Key="Loc_Heading3">Заголовок 3</sys:String>
+    <sys:String x:Key="Loc_BodyText">Обычный текст</sys:String>
+    <sys:String x:Key="Loc_CaptionText">Подпись</sys:String>
+    <sys:String x:Key="Loc_TreeDocs">Документы</sys:String>
+    <sys:String x:Key="Loc_TreeImages">Изображения</sys:String>
+
+    <sys:String x:Key="Loc_ExpDataGrid">DataGrid (CRUD и копирование между таблицами)</sys:String>
+    <sys:String x:Key="Loc_Copy">Копировать (из Таблицы 1)</sys:String>
+    <sys:String x:Key="Loc_Paste">Вставить (в Таблицу 2)</sys:String>
+    <sys:String x:Key="Loc_DeleteSecond">Удалить из Таблицы 2</sys:String>
+    <sys:String x:Key="Loc_ColLastName">Фамилия</sys:String>
+    <sys:String x:Key="Loc_ColLastNameColon">Фамилия:</sys:String>
+    <sys:String x:Key="Loc_ColGroup">Группа</sys:String>
+    <sys:String x:Key="Loc_ColGroupColon">Группа:</sys:String>
+    <sys:String x:Key="Loc_ColGrade">Оценка</sys:String>
+    <sys:String x:Key="Loc_ColGradeRange">Оценка (1-10):</sys:String>
+    <sys:String x:Key="Loc_Add">Добавить</sys:String>
+    <sys:String x:Key="Loc_Edit">Изменить</sys:String>
+    <sys:String x:Key="Loc_Delete">Удалить</sys:String>
+    <sys:String x:Key="Loc_Table1Title">Таблица 1 (основная — можно редактировать):</sys:String>
+    <sys:String x:Key="Loc_Table2Title">Таблица 2 (результат вставки):</sys:String>
+
+    <sys:String x:Key="Loc_ExpTooltips">Всплывающие подсказки</sys:String>
+    <sys:String x:Key="Loc_HoverMe">Наведите курсор</sys:String>
+    <sys:String x:Key="Loc_TooltipSimple">Это простая всплывающая подсказка</sys:String>
+    <sys:String x:Key="Loc_InputField">Поле ввода</sys:String>
+    <sys:String x:Key="Loc_TooltipInput">Подсказка для текстового поля</sys:String>
+
+    <sys:String x:Key="Loc_ExpMenus">Меню и контекстное меню</sys:String>
+    <sys:String x:Key="Loc_MenuFile">Файл</sys:String>
+    <sys:String x:Key="Loc_MenuNew">Создать</sys:String>
+    <sys:String x:Key="Loc_MenuOpen">Открыть</sys:String>
+    <sys:String x:Key="Loc_MenuExit">Выход</sys:String>
+    <sys:String x:Key="Loc_MenuEdit">Правка</sys:String>
+    <sys:String x:Key="Loc_MenuCopyRow">Копировать строку таблицы</sys:String>
+    <sys:String x:Key="Loc_MenuPasteRow">Вставить во 2-ю таблицу</sys:String>
+    <sys:String x:Key="Loc_MenuDeleteRow">Удалить выбранную строку</sys:String>
+    <sys:String x:Key="Loc_RightClickHint">ПКМ для контекстного меню</sys:String>
+</ResourceDictionary>
