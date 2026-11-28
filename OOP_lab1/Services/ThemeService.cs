@@ -4,17 +4,24 @@ using Microsoft.Win32;
 
 namespace OOP_lab1.Services
 {
+    public enum AppTheme
+    {
+        Light,
+        Dark,
+        System
+    }
+
     public static class ThemeService
     {
         private const string LightThemeUri = "pack://application:,,,/ThemeLibrary;component/Themes/LightTheme.xaml";
         private const string DarkThemeUri = "pack://application:,,,/ThemeLibrary;component/Themes/DarkTheme.xaml";
 
-        public static void ApplyTheme(string themeName)
+        public static void ApplyTheme(AppTheme theme)
         {
-            string uriString = themeName switch
+            string uriString = theme switch
             {
-                "Темная (Dark)" => DarkThemeUri,
-                "Системная (System)" => IsWindowsDarkTheme() ? DarkThemeUri : LightThemeUri,
+                AppTheme.Dark => DarkThemeUri,
+                AppTheme.System => IsWindowsDarkTheme() ? DarkThemeUri : LightThemeUri,
                 _ => LightThemeUri
             };
 
@@ -22,22 +29,6 @@ namespace OOP_lab1.Services
             if (mergedDictionaries.Count > 1)
             {
                 mergedDictionaries[1] = new ResourceDictionary
-                {
-                    Source = new Uri(uriString, UriKind.Absolute)
-                };
-            }
-        }
-
-        public static void ApplyLanguage(string languageName)
-        {
-            string uriString = languageName == "English"
-                ? "pack://application:,,,/ThemeLibrary;component/Localization/Lang.en.xaml"
-                : "pack://application:,,,/ThemeLibrary;component/Localization/Lang.ru.xaml";
-
-            var mergedDictionaries = Application.Current.Resources.MergedDictionaries;
-            if (mergedDictionaries.Count > 3)
-            {
-                mergedDictionaries[3] = new ResourceDictionary
                 {
                     Source = new Uri(uriString, UriKind.Absolute)
                 };

@@ -1,0 +1,1019 @@
+{
+  "Loc_WindowTitle": {
+    "ru": "Настройки приложения",
+    "en": "Application Settings",
+    "de": "Anwendungseinstellungen",
+    "fr": "Paramètres de l’application",
+    "es": "Configuración de la aplicación",
+    "it": "Impostazioni dell’applicazione",
+    "uk": "Налаштування застосунку"
+  },
+  "Loc_TabGeneral": {
+    "ru": "Основное",
+    "en": "General",
+    "de": "Allgemein",
+    "fr": "Général",
+    "es": "General",
+    "it": "Generale",
+    "uk": "Основне"
+  },
+  "Loc_TabPalette": {
+    "ru": "Цветовая палитра",
+    "en": "Color Palette",
+    "de": "Farbpalette",
+    "fr": "Palette de couleurs",
+    "es": "Paleta de colores",
+    "it": "Tavolozza dei colori",
+    "uk": "Палітра кольорів"
+  },
+  "Loc_TabControls": {
+    "ru": "Элементы управления",
+    "en": "Controls",
+    "de": "Steuerelemente",
+    "fr": "Contrôles",
+    "es": "Controles",
+    "it": "Controlli",
+    "uk": "Елементи керування"
+  },
+  "Loc_TabContainers": {
+    "ru": "Контейнеры компоновки",
+    "en": "Layout Containers",
+    "de": "Layoutcontainer",
+    "fr": "Conteneurs de disposition",
+    "es": "Contenedores de diseño",
+    "it": "Contenitori di layout",
+    "uk": "Контейнери компонування"
+  },
+  "Loc_TabBindings": {
+    "ru": "Привязки (Binding)",
+    "en": "Bindings",
+    "de": "Bindungen",
+    "fr": "Liaisons",
+    "es": "Enlaces",
+    "it": "Binding",
+    "uk": "Прив’язки"
+  },
+  "Loc_GroupPersonalization": {
+    "ru": "Персонализация",
+    "en": "Personalization",
+    "de": "Personalisierung",
+    "fr": "Personnalisation",
+    "es": "Personalización",
+    "it": "Personalizzazione",
+    "uk": "Персоналізація"
+  },
+  "Loc_ThemeLabel": {
+    "ru": "Тема интерфейса:",
+    "en": "Interface Theme:",
+    "de": "Oberflächendesign:",
+    "fr": "Thème de l’interface :",
+    "es": "Tema de la interfaz:",
+    "it": "Tema dell’interfaccia:",
+    "uk": "Тема інтерфейсу:"
+  },
+  "Loc_LanguageLabel": {
+    "ru": "Язык интерфейса:",
+    "en": "Interface Language:",
+    "de": "Oberflächensprache:",
+    "fr": "Langue de l’interface :",
+    "es": "Idioma de la interfaz:",
+    "it": "Lingua dell’interfaccia:",
+    "uk": "Мова інтерфейсу:"
+  },
+  "Loc_GroupFonts": {
+    "ru": "Настройки шрифтов",
+    "en": "Font Settings",
+    "de": "Schrifteinstellungen",
+    "fr": "Paramètres de police",
+    "es": "Configuración de fuente",
+    "it": "Impostazioni del carattere",
+    "uk": "Налаштування шрифтів"
+  },
+  "Loc_FontLabel": {
+    "ru": "Шрифт:",
+    "en": "Font:",
+    "de": "Schriftart:",
+    "fr": "Police :",
+    "es": "Fuente:",
+    "it": "Carattere:",
+    "uk": "Шрифт:"
+  },
+  "Loc_FontSizeLabel": {
+    "ru": "Размер шрифта:",
+    "en": "Font Size:",
+    "de": "Schriftgröße:",
+    "fr": "Taille de police :",
+    "es": "Tamaño de fuente:",
+    "it": "Dimensione del carattere:",
+    "uk": "Розмір шрифту:"
+  },
+  "Loc_ResetSettings": {
+    "ru": "Сбросить настройки по умолчанию",
+    "en": "Reset to Default",
+    "de": "Standardeinstellungen wiederherstellen",
+    "fr": "Rétablir les paramètres par défaut",
+    "es": "Restablecer los valores predeterminados",
+    "it": "Ripristina le impostazioni predefinite",
+    "uk": "Відновити типові налаштування"
+  },
+  "Loc_CurrentTheme": {
+    "ru": "Текущая тема:",
+    "en": "Current theme:",
+    "de": "Aktuelles Design:",
+    "fr": "Thème actuel :",
+    "es": "Tema actual:",
+    "it": "Tema attuale:",
+    "uk": "Поточна тема:"
+  },
+  "Loc_GroupMainColors": {
+    "ru": "Основные цвета",
+    "en": "Main Colors",
+    "de": "Hauptfarben",
+    "fr": "Couleurs principales",
+    "es": "Colores principales",
+    "it": "Colori principali",
+    "uk": "Основні кольори"
+  },
+  "Loc_GroupIndicatorColors": {
+    "ru": "Индикаторные цвета",
+    "en": "Indicator Colors",
+    "de": "Statusfarben",
+    "fr": "Couleurs d’état",
+    "es": "Colores de estado",
+    "it": "Colori di stato",
+    "uk": "Кольори станів"
+  },
+  "Loc_ColorPrimary": {
+    "ru": "Основной",
+    "en": "Primary",
+    "de": "Primär",
+    "fr": "Principale",
+    "es": "Principal",
+    "it": "Primario",
+    "uk": "Основний"
+  },
+  "Loc_ColorAccent": {
+    "ru": "Акцентный",
+    "en": "Accent",
+    "de": "Akzent",
+    "fr": "Accent",
+    "es": "Acento",
+    "it": "Accento",
+    "uk": "Акцентний"
+  },
+  "Loc_ColorSuccess": {
+    "ru": "Успех",
+    "en": "Success",
+    "de": "Erfolg",
+    "fr": "Succès",
+    "es": "Éxito",
+    "it": "Successo",
+    "uk": "Успіх"
+  },
+  "Loc_ColorError": {
+    "ru": "Ошибка",
+    "en": "Error",
+    "de": "Fehler",
+    "fr": "Erreur",
+    "es": "Error",
+    "it": "Errore",
+    "uk": "Помилка"
+  },
+  "Loc_ColorInfo": {
+    "ru": "Информация",
+    "en": "Info",
+    "de": "Information",
+    "fr": "Information",
+    "es": "Información",
+    "it": "Informazione",
+    "uk": "Інформація"
+  },
+  "Loc_ShadesPrimary": {
+    "ru": "Оттенки: Основной",
+    "en": "Shades: Primary",
+    "de": "Abstufungen: Primär",
+    "fr": "Nuances de la couleur principale",
+    "es": "Tonos del color principal",
+    "it": "Sfumature del colore primario",
+    "uk": "Відтінки основного кольору"
+  },
+  "Loc_ShadesAccent": {
+    "ru": "Оттенки: Акцентный",
+    "en": "Shades: Accent",
+    "de": "Abstufungen: Akzent",
+    "fr": "Nuances de la couleur d’accent",
+    "es": "Tonos del color de acento",
+    "it": "Sfumature del colore di accento",
+    "uk": "Відтінки акцентного кольору"
+  },
+  "Loc_ShadesSuccess": {
+    "ru": "Оттенки: Успех",
+    "en": "Shades: Success",
+    "de": "Abstufungen: Erfolg",
+    "fr": "Nuances de succès",
+    "es": "Tonos de éxito",
+    "it": "Sfumature per il successo",
+    "uk": "Відтінки кольору успіху"
+  },
+  "Loc_ShadesError": {
+    "ru": "Оттенки: Ошибка",
+    "en": "Shades: Error",
+    "de": "Abstufungen: Fehler",
+    "fr": "Nuances d’erreur",
+    "es": "Tonos de error",
+    "it": "Sfumature per gli errori",
+    "uk": "Відтінки кольору помилки"
+  },
+  "Loc_ShadesInfo": {
+    "ru": "Оттенки: Информация",
+    "en": "Shades: Info",
+    "de": "Abstufungen: Information",
+    "fr": "Nuances d’information",
+    "es": "Tonos de información",
+    "it": "Sfumature per le informazioni",
+    "uk": "Відтінки кольору інформації"
+  },
+  "Loc_ExpButtons": {
+    "ru": "Кнопки",
+    "en": "Buttons",
+    "de": "Schaltflächen",
+    "fr": "Boutons",
+    "es": "Botones",
+    "it": "Pulsanti",
+    "uk": "Кнопки"
+  },
+  "Loc_PrimaryColon": {
+    "ru": "Основной:",
+    "en": "Primary:",
+    "de": "Primär:",
+    "fr": "Principale :",
+    "es": "Principal:",
+    "it": "Primario:",
+    "uk": "Основний:"
+  },
+  "Loc_AccentColon": {
+    "ru": "Акцентный:",
+    "en": "Accent:",
+    "de": "Akzent:",
+    "fr": "Accent :",
+    "es": "Acento:",
+    "it": "Accento:",
+    "uk": "Акцентний:"
+  },
+  "Loc_SuccessColon": {
+    "ru": "Успех:",
+    "en": "Success:",
+    "de": "Erfolg:",
+    "fr": "Succès :",
+    "es": "Éxito:",
+    "it": "Successo:",
+    "uk": "Успіх:"
+  },
+  "Loc_ErrorColon": {
+    "ru": "Ошибка:",
+    "en": "Error:",
+    "de": "Fehler:",
+    "fr": "Erreur :",
+    "es": "Error:",
+    "it": "Errore:",
+    "uk": "Помилка:"
+  },
+  "Loc_InfoColon": {
+    "ru": "Информация:",
+    "en": "Info:",
+    "de": "Information:",
+    "fr": "Information :",
+    "es": "Información:",
+    "it": "Informazione:",
+    "uk": "Інформація:"
+  },
+  "Loc_BtnText": {
+    "ru": "Кнопка",
+    "en": "Button",
+    "de": "Schaltfläche",
+    "fr": "Bouton",
+    "es": "Botón",
+    "it": "Pulsante",
+    "uk": "Кнопка"
+  },
+  "Loc_ToggleText": {
+    "ru": "Переключатель",
+    "en": "Toggle",
+    "de": "Umschalter",
+    "fr": "Interrupteur",
+    "es": "Interruptor",
+    "it": "Interruttore",
+    "uk": "Перемикач"
+  },
+  "Loc_ListItem1": {
+    "ru": "Элемент 1",
+    "en": "Item 1",
+    "de": "Element 1",
+    "fr": "Élément 1",
+    "es": "Elemento 1",
+    "it": "Elemento 1",
+    "uk": "Елемент 1"
+  },
+  "Loc_ListItem2": {
+    "ru": "Элемент 2",
+    "en": "Item 2",
+    "de": "Element 2",
+    "fr": "Élément 2",
+    "es": "Elemento 2",
+    "it": "Elemento 2",
+    "uk": "Елемент 2"
+  },
+  "Loc_DisabledItem": {
+    "ru": "Неактивный",
+    "en": "Disabled",
+    "de": "Deaktiviert",
+    "fr": "Désactivé",
+    "es": "Desactivado",
+    "it": "Disattivato",
+    "uk": "Неактивний"
+  },
+  "Loc_Option1": {
+    "ru": "Вариант 1",
+    "en": "Option 1",
+    "de": "Option 1",
+    "fr": "Option 1",
+    "es": "Opción 1",
+    "it": "Opzione 1",
+    "uk": "Варіант 1"
+  },
+  "Loc_Option2": {
+    "ru": "Вариант 2",
+    "en": "Option 2",
+    "de": "Option 2",
+    "fr": "Option 2",
+    "es": "Opción 2",
+    "it": "Opzione 2",
+    "uk": "Варіант 2"
+  },
+  "Loc_NormalText": {
+    "ru": "Обычный",
+    "en": "Normal",
+    "de": "Normal",
+    "fr": "Normal",
+    "es": "Normal",
+    "it": "Normale",
+    "uk": "Звичайний"
+  },
+  "Loc_Heading1": {
+    "ru": "Заголовок 1",
+    "en": "Heading 1",
+    "de": "Überschrift 1",
+    "fr": "Titre 1",
+    "es": "Encabezado 1",
+    "it": "Titolo 1",
+    "uk": "Заголовок 1"
+  },
+  "Loc_Heading2": {
+    "ru": "Заголовок 2",
+    "en": "Heading 2",
+    "de": "Überschrift 2",
+    "fr": "Titre 2",
+    "es": "Encabezado 2",
+    "it": "Titolo 2",
+    "uk": "Заголовок 2"
+  },
+  "Loc_Heading3": {
+    "ru": "Заголовок 3",
+    "en": "Heading 3",
+    "de": "Überschrift 3",
+    "fr": "Titre 3",
+    "es": "Encabezado 3",
+    "it": "Titolo 3",
+    "uk": "Заголовок 3"
+  },
+  "Loc_BodyText": {
+    "ru": "Обычный текст",
+    "en": "Regular text",
+    "de": "Normaler Text",
+    "fr": "Texte courant",
+    "es": "Texto normal",
+    "it": "Testo normale",
+    "uk": "Звичайний текст"
+  },
+  "Loc_CaptionText": {
+    "ru": "Подпись",
+    "en": "Caption",
+    "de": "Beschriftung",
+    "fr": "Légende",
+    "es": "Leyenda",
+    "it": "Didascalia",
+    "uk": "Підпис"
+  },
+  "Loc_TreeDocs": {
+    "ru": "Документы",
+    "en": "Documents",
+    "de": "Dokumente",
+    "fr": "Documents",
+    "es": "Documentos",
+    "it": "Documenti",
+    "uk": "Документи"
+  },
+  "Loc_TreeImages": {
+    "ru": "Изображения",
+    "en": "Images",
+    "de": "Bilder",
+    "fr": "Images",
+    "es": "Imágenes",
+    "it": "Immagini",
+    "uk": "Зображення"
+  },
+  "Loc_ExpDataGrid": {
+    "ru": "DataGrid (CRUD и копирование между таблицами)",
+    "en": "DataGrid (CRUD and copy between tables)",
+    "de": "DataGrid (CRUD und Kopieren zwischen Tabellen)",
+    "fr": "DataGrid (CRUD et copie entre tableaux)",
+    "es": "DataGrid (CRUD y copia entre tablas)",
+    "it": "DataGrid (CRUD e copia tra tabelle)",
+    "uk": "DataGrid (CRUD і копіювання між таблицями)"
+  },
+  "Loc_Copy": {
+    "ru": "Копировать (из Таблицы 1)",
+    "en": "Copy (from Table 1)",
+    "de": "Kopieren (aus Tabelle 1)",
+    "fr": "Copier depuis le tableau 1",
+    "es": "Copiar de la tabla 1",
+    "it": "Copia dalla tabella 1",
+    "uk": "Копіювати з таблиці 1"
+  },
+  "Loc_Paste": {
+    "ru": "Вставить (в Таблицу 2)",
+    "en": "Paste (to Table 2)",
+    "de": "Einfügen (in Tabelle 2)",
+    "fr": "Coller dans le tableau 2",
+    "es": "Pegar en la tabla 2",
+    "it": "Incolla nella tabella 2",
+    "uk": "Вставити в таблицю 2"
+  },
+  "Loc_ColLastName": {
+    "ru": "Фамилия",
+    "en": "Last Name",
+    "de": "Nachname",
+    "fr": "Nom",
+    "es": "Apellido",
+    "it": "Cognome",
+    "uk": "Прізвище"
+  },
+  "Loc_ColLastNameColon": {
+    "ru": "Фамилия:",
+    "en": "Last Name:",
+    "de": "Nachname:",
+    "fr": "Nom :",
+    "es": "Apellido:",
+    "it": "Cognome:",
+    "uk": "Прізвище:"
+  },
+  "Loc_ColGroup": {
+    "ru": "Группа",
+    "en": "Group",
+    "de": "Gruppe",
+    "fr": "Groupe",
+    "es": "Grupo",
+    "it": "Gruppo",
+    "uk": "Група"
+  },
+  "Loc_ColGroupColon": {
+    "ru": "Группа:",
+    "en": "Group:",
+    "de": "Gruppe:",
+    "fr": "Groupe :",
+    "es": "Grupo:",
+    "it": "Gruppo:",
+    "uk": "Група:"
+  },
+  "Loc_ColGrade": {
+    "ru": "Оценка",
+    "en": "Grade",
+    "de": "Note",
+    "fr": "Note",
+    "es": "Nota",
+    "it": "Voto",
+    "uk": "Оцінка"
+  },
+  "Loc_ColGradeRange": {
+    "ru": "Оценка (1-10):",
+    "en": "Grade (1-10):",
+    "de": "Note (1–10):",
+    "fr": "Note (1–10) :",
+    "es": "Nota (1–10):",
+    "it": "Voto (1–10):",
+    "uk": "Оцінка (1–10):"
+  },
+  "Loc_Add": {
+    "ru": "Добавить",
+    "en": "Add",
+    "de": "Hinzufügen",
+    "fr": "Ajouter",
+    "es": "Añadir",
+    "it": "Aggiungi",
+    "uk": "Додати"
+  },
+  "Loc_Edit": {
+    "ru": "Изменить",
+    "en": "Edit",
+    "de": "Bearbeiten",
+    "fr": "Modifier",
+    "es": "Editar",
+    "it": "Modifica",
+    "uk": "Змінити"
+  },
+  "Loc_Delete": {
+    "ru": "Удалить",
+    "en": "Delete",
+    "de": "Löschen",
+    "fr": "Supprimer",
+    "es": "Eliminar",
+    "it": "Elimina",
+    "uk": "Видалити"
+  },
+  "Loc_Table1Title": {
+    "ru": "Таблица 1 (основная — можно редактировать):",
+    "en": "Table 1 (main — editable):",
+    "de": "Tabelle 1 (bearbeitbar):",
+    "fr": "Tableau 1 (modifiable) :",
+    "es": "Tabla 1 (editable):",
+    "it": "Tabella 1 (modificabile):",
+    "uk": "Таблиця 1 (можна редагувати):"
+  },
+  "Loc_Table2Title": {
+    "ru": "Таблица 2 (результат вставки):",
+    "en": "Table 2 (pasted items):",
+    "de": "Tabelle 2 (eingefügte Zeilen):",
+    "fr": "Tableau 2 (lignes collées) :",
+    "es": "Tabla 2 (filas pegadas):",
+    "it": "Tabella 2 (righe incollate):",
+    "uk": "Таблиця 2 (вставлені рядки):"
+  },
+  "Loc_ExpTooltips": {
+    "ru": "Всплывающие подсказки",
+    "en": "Tooltips",
+    "de": "Kurzinfos",
+    "fr": "Info-bulles",
+    "es": "Información sobre herramientas",
+    "it": "Descrizioni comandi",
+    "uk": "Спливні підказки"
+  },
+  "Loc_HoverMe": {
+    "ru": "Наведите курсор",
+    "en": "Hover over me",
+    "de": "Mauszeiger hierher bewegen",
+    "fr": "Survolez ce bouton",
+    "es": "Pasa el cursor por aquí",
+    "it": "Passa il puntatore qui",
+    "uk": "Наведіть курсор"
+  },
+  "Loc_TooltipSimple": {
+    "ru": "Это простая всплывающая подсказка",
+    "en": "This is a simple tooltip",
+    "de": "Dies ist eine einfache Kurzinfo",
+    "fr": "Ceci est une info-bulle simple",
+    "es": "Esta es una ayuda emergente sencilla",
+    "it": "Questo è un suggerimento di esempio",
+    "uk": "Це проста спливна підказка"
+  },
+  "Loc_InputField": {
+    "ru": "Поле ввода",
+    "en": "Input field",
+    "de": "Eingabefeld",
+    "fr": "Champ de saisie",
+    "es": "Campo de entrada",
+    "it": "Campo di input",
+    "uk": "Поле введення"
+  },
+  "Loc_TooltipInput": {
+    "ru": "Подсказка для текстового поля",
+    "en": "Tooltip for text input",
+    "de": "Hinweis zum Eingabefeld",
+    "fr": "Aide pour le champ de saisie",
+    "es": "Ayuda para el campo de entrada",
+    "it": "Suggerimento per il campo di input",
+    "uk": "Підказка для поля введення"
+  },
+  "Loc_ExpMenus": {
+    "ru": "Меню и контекстное меню",
+    "en": "Menu and Context Menu",
+    "de": "Menü und Kontextmenü",
+    "fr": "Menu et menu contextuel",
+    "es": "Menú y menú contextual",
+    "it": "Menu e menu contestuale",
+    "uk": "Меню та контекстне меню"
+  },
+  "Loc_MenuFile": {
+    "ru": "Файл",
+    "en": "File",
+    "de": "Datei",
+    "fr": "Fichier",
+    "es": "Archivo",
+    "it": "File",
+    "uk": "Файл"
+  },
+  "Loc_MenuNew": {
+    "ru": "Создать",
+    "en": "New",
+    "de": "Neu",
+    "fr": "Nouveau",
+    "es": "Nuevo",
+    "it": "Nuovo",
+    "uk": "Створити"
+  },
+  "Loc_MenuOpen": {
+    "ru": "Открыть",
+    "en": "Open",
+    "de": "Öffnen",
+    "fr": "Ouvrir",
+    "es": "Abrir",
+    "it": "Apri",
+    "uk": "Відкрити"
+  },
+  "Loc_MenuExit": {
+    "ru": "Выход",
+    "en": "Exit",
+    "de": "Beenden",
+    "fr": "Quitter",
+    "es": "Salir",
+    "it": "Esci",
+    "uk": "Вихід"
+  },
+  "Loc_MenuEdit": {
+    "ru": "Правка",
+    "en": "Edit",
+    "de": "Bearbeiten",
+    "fr": "Édition",
+    "es": "Editar",
+    "it": "Modifica",
+    "uk": "Редагування"
+  },
+  "Loc_MenuCopyRow": {
+    "ru": "Копировать выбранные строки",
+    "en": "Copy selected rows",
+    "de": "Ausgewählte Zeilen kopieren",
+    "fr": "Copier les lignes sélectionnées",
+    "es": "Copiar las filas seleccionadas",
+    "it": "Copia le righe selezionate",
+    "uk": "Копіювати вибрані рядки"
+  },
+  "Loc_MenuPasteRow": {
+    "ru": "Вставить во 2-ю таблицу",
+    "en": "Paste to Table 2",
+    "de": "In Tabelle 2 einfügen",
+    "fr": "Coller dans le tableau 2",
+    "es": "Pegar en la tabla 2",
+    "it": "Incolla nella tabella 2",
+    "uk": "Вставити в таблицю 2"
+  },
+  "Loc_MenuDeleteRow": {
+    "ru": "Удалить выбранные строки",
+    "en": "Delete selected rows",
+    "de": "Ausgewählte Zeilen löschen",
+    "fr": "Supprimer les lignes sélectionnées",
+    "es": "Eliminar las filas seleccionadas",
+    "it": "Elimina le righe selezionate",
+    "uk": "Видалити вибрані рядки"
+  },
+  "Loc_RightClickHint": {
+    "ru": "ПКМ для контекстного меню",
+    "en": "Right-click for context menu",
+    "de": "Rechtsklick für das Kontextmenü",
+    "fr": "Clic droit pour ouvrir le menu contextuel",
+    "es": "Haz clic derecho para abrir el menú contextual",
+    "it": "Clic destro per aprire il menu contestuale",
+    "uk": "Клацніть правою кнопкою, щоб відкрити контекстне меню"
+  },
+  "LanguageName": {
+    "ru": "Русский",
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "it": "Italiano",
+    "uk": "Українська"
+  },
+  "Theme_Light": {
+    "ru": "Светлая",
+    "en": "Light",
+    "de": "Hell",
+    "fr": "Clair",
+    "es": "Claro",
+    "it": "Chiaro",
+    "uk": "Світла"
+  },
+  "Theme_Dark": {
+    "ru": "Тёмная",
+    "en": "Dark",
+    "de": "Dunkel",
+    "fr": "Sombre",
+    "es": "Oscuro",
+    "it": "Scuro",
+    "uk": "Темна"
+  },
+  "Theme_System": {
+    "ru": "Системная",
+    "en": "System",
+    "de": "System",
+    "fr": "Système",
+    "es": "Sistema",
+    "it": "Sistema",
+    "uk": "Системна"
+  },
+  "Loc_BindingModes": {
+    "ru": "Типы привязки (Binding.Mode)",
+    "en": "Binding modes (Binding.Mode)",
+    "de": "Bindungsarten (Binding.Mode)",
+    "fr": "Modes de liaison (Binding.Mode)",
+    "es": "Modos de enlace (Binding.Mode)",
+    "it": "Modalità di binding (Binding.Mode)",
+    "uk": "Типи прив’язки (Binding.Mode)"
+  },
+  "Loc_BindingSource": {
+    "ru": "Значение в ViewModel (источник):",
+    "en": "Value in the ViewModel (source):",
+    "de": "Wert im ViewModel (Quelle):",
+    "fr": "Valeur dans le ViewModel (source) :",
+    "es": "Valor en ViewModel (origen):",
+    "it": "Valore nel ViewModel (origine):",
+    "uk": "Значення у ViewModel (джерело):"
+  },
+  "Loc_BindingChange": {
+    "ru": "Изменить значение из ViewModel",
+    "en": "Change the value from the ViewModel",
+    "de": "Wert im ViewModel ändern",
+    "fr": "Modifier la valeur depuis le ViewModel",
+    "es": "Cambiar el valor desde ViewModel",
+    "it": "Modifica il valore dal ViewModel",
+    "uk": "Змінити значення з ViewModel"
+  },
+  "Loc_OneWay": {
+    "ru": "1. OneWay (Источник → Цель):",
+    "en": "1. OneWay (Source → Target):",
+    "de": "1. OneWay (Quelle → Ziel):",
+    "fr": "1. OneWay (Source → Cible) :",
+    "es": "1. OneWay (Origen → Destino):",
+    "it": "1. OneWay (Origine → Destinazione):",
+    "uk": "1. OneWay (Джерело → Ціль):"
+  },
+  "Loc_OneWayHelp": {
+    "ru": "Меняется при изменении VM, но ввод здесь не меняет VM.",
+    "en": "Updates when the ViewModel changes. Typing here leaves the ViewModel unchanged.",
+    "de": "Das Feld folgt dem ViewModel. Eingaben hier wirken sich nur auf das Feld aus.",
+    "fr": "Le champ suit le ViewModel. La saisie modifie uniquement ce champ.",
+    "es": "El campo se actualiza con ViewModel. La escritura solo modifica este campo.",
+    "it": "Il campo segue il ViewModel. La digitazione modifica solo questo campo.",
+    "uk": "Поле оновлюється зі змінами ViewModel. Введення змінює лише це поле."
+  },
+  "Loc_TwoWay": {
+    "ru": "2. TwoWay (Источник = Цель):",
+    "en": "2. TwoWay (Source ↔ Target):",
+    "de": "2. TwoWay (Quelle ↔ Ziel):",
+    "fr": "2. TwoWay (Source ↔ Cible) :",
+    "es": "2. TwoWay (Origen ↔ Destino):",
+    "it": "2. TwoWay (Origine ↔ Destinazione):",
+    "uk": "2. TwoWay (Джерело ↔ Ціль):"
+  },
+  "Loc_TwoWayHelp": {
+    "ru": "Двусторонняя синхронизация в реальном времени.",
+    "en": "Changes sync in both directions as you type.",
+    "de": "Änderungen werden sofort in beide Richtungen übernommen.",
+    "fr": "Les modifications sont synchronisées immédiatement dans les deux sens.",
+    "es": "Los cambios se sincronizan al instante en ambas direcciones.",
+    "it": "Le modifiche si sincronizzano subito in entrambe le direzioni.",
+    "uk": "Зміни одразу синхронізуються в обох напрямках."
+  },
+  "Loc_OneTime": {
+    "ru": "3. OneTime (Один раз при запуске):",
+    "en": "3. OneTime (Once at startup):",
+    "de": "3. OneTime (Einmal beim Start):",
+    "fr": "3. OneTime (Une fois au démarrage) :",
+    "es": "3. OneTime (Una vez al iniciar):",
+    "it": "3. OneTime (Una volta all’avvio):",
+    "uk": "3. OneTime (Один раз під час запуску):"
+  },
+  "Loc_OneTimeHelp": {
+    "ru": "Берёт начальное значение один раз и больше не обновляется.",
+    "en": "Reads the initial value once and keeps it.",
+    "de": "Übernimmt den Anfangswert einmalig und behält ihn bei.",
+    "fr": "Lit la valeur initiale une seule fois et la conserve.",
+    "es": "Lee el valor inicial una sola vez y lo conserva.",
+    "it": "Legge il valore iniziale una sola volta e lo mantiene.",
+    "uk": "Зчитує початкове значення один раз і зберігає його."
+  },
+  "Loc_OneWayToSource": {
+    "ru": "4. OneWayToSource (Цель → Источник):",
+    "en": "4. OneWayToSource (Target → Source):",
+    "de": "4. OneWayToSource (Ziel → Quelle):",
+    "fr": "4. OneWayToSource (Cible → Source) :",
+    "es": "4. OneWayToSource (Destino → Origen):",
+    "it": "4. OneWayToSource (Destinazione → Origine):",
+    "uk": "4. OneWayToSource (Ціль → Джерело):"
+  },
+  "Loc_OneWayToSourceHelp": {
+    "ru": "Стартует пустым. Ввод здесь меняет VM, но изменения VM сюда не приходят.",
+    "en": "Starts empty. Typing updates the ViewModel. Updates flow from the field to the ViewModel.",
+    "de": "Das Feld ist anfangs leer. Die Eingabe aktualisiert das ViewModel.",
+    "fr": "Le champ est vide au départ. La saisie met à jour le ViewModel.",
+    "es": "El campo empieza vacío. La escritura actualiza ViewModel.",
+    "it": "Il campo è inizialmente vuoto. La digitazione aggiorna il ViewModel.",
+    "uk": "Спочатку поле порожнє. Введення оновлює ViewModel."
+  },
+  "Loc_UpdateTriggers": {
+    "ru": "Режимы обновления (UpdateSourceTrigger)",
+    "en": "Update triggers (UpdateSourceTrigger)",
+    "de": "Aktualisierungsauslöser (UpdateSourceTrigger)",
+    "fr": "Déclencheurs de mise à jour (UpdateSourceTrigger)",
+    "es": "Desencadenadores de actualización (UpdateSourceTrigger)",
+    "it": "Trigger di aggiornamento (UpdateSourceTrigger)",
+    "uk": "Умови оновлення (UpdateSourceTrigger)"
+  },
+  "Loc_TriggerPropertyChanged": {
+    "ru": "1. PropertyChanged (сразу при каждой букве):",
+    "en": "1. PropertyChanged (As you type):",
+    "de": "1. PropertyChanged (Bei jeder Eingabe):",
+    "fr": "1. PropertyChanged (Pendant la saisie) :",
+    "es": "1. PropertyChanged (Al escribir):",
+    "it": "1. PropertyChanged (Durante la digitazione):",
+    "uk": "1. PropertyChanged (Під час введення):"
+  },
+  "Loc_TriggerLostFocus": {
+    "ru": "2. LostFocus (только при потере фокуса / Tab):",
+    "en": "2. LostFocus (When focus leaves the field):",
+    "de": "2. LostFocus (Beim Verlassen des Felds):",
+    "fr": "2. LostFocus (En quittant le champ) :",
+    "es": "2. LostFocus (Al salir del campo):",
+    "it": "2. LostFocus (All’uscita dal campo):",
+    "uk": "2. LostFocus (Після втрати фокуса):"
+  },
+  "Loc_TriggerExplicit": {
+    "ru": "3. Explicit (только по кнопке вручную):",
+    "en": "3. Explicit (When you click Update):",
+    "de": "3. Explicit (Über die Schaltfläche):",
+    "fr": "3. Explicit (Avec le bouton de mise à jour) :",
+    "es": "3. Explicit (Con el botón de actualizar):",
+    "it": "3. Explicit (Con il pulsante di aggiornamento):",
+    "uk": "3. Explicit (За кнопкою оновлення):"
+  },
+  "Loc_TriggerUpdate": {
+    "ru": "Обновить вручную",
+    "en": "Update manually",
+    "de": "Manuell aktualisieren",
+    "fr": "Mettre à jour",
+    "es": "Actualizar manualmente",
+    "it": "Aggiorna manualmente",
+    "uk": "Оновити вручну"
+  },
+  "Loc_TriggerDefault": {
+    "ru": "4. Default (для TextBox.Text по умолчанию = LostFocus):",
+    "en": "4. Default (LostFocus for TextBox.Text):",
+    "de": "4. Default (LostFocus für TextBox.Text):",
+    "fr": "4. Default (LostFocus pour TextBox.Text) :",
+    "es": "4. Default (LostFocus para TextBox.Text):",
+    "it": "4. Default (LostFocus per TextBox.Text):",
+    "uk": "4. Default (LostFocus для TextBox.Text):"
+  },
+  "Demo_InitialText": {
+    "ru": "Начальный текст",
+    "en": "Initial text",
+    "de": "Anfangstext",
+    "fr": "Texte initial",
+    "es": "Texto inicial",
+    "it": "Testo iniziale",
+    "uk": "Початковий текст"
+  },
+  "Demo_TriggerText": {
+    "ru": "Текст для проверки",
+    "en": "Test text",
+    "de": "Testtext",
+    "fr": "Texte de test",
+    "es": "Texto de prueba",
+    "it": "Testo di prova",
+    "uk": "Текст для перевірки"
+  },
+  "Demo_ChangedText": {
+    "ru": "Изменено из VM №{0}",
+    "en": "Changed from the ViewModel #{0}",
+    "de": "Im ViewModel geändert (Nr. {0})",
+    "fr": "Modification depuis le ViewModel nº {0}",
+    "es": "Cambio desde ViewModel n.º {0}",
+    "it": "Modifica dal ViewModel n. {0}",
+    "uk": "Змінено з ViewModel №{0}"
+  },
+  "Status_Ready": {
+    "ru": "Готово",
+    "en": "Ready",
+    "de": "Bereit",
+    "fr": "Prêt",
+    "es": "Listo",
+    "it": "Pronto",
+    "uk": "Готово"
+  },
+  "Status_ThemeChanged": {
+    "ru": "Тема изменена: {0}",
+    "en": "Theme changed to {0}",
+    "de": "Design geändert: {0}",
+    "fr": "Thème sélectionné : {0}",
+    "es": "Tema seleccionado: {0}",
+    "it": "Tema selezionato: {0}",
+    "uk": "Тему змінено: {0}"
+  },
+  "Status_LanguageChanged": {
+    "ru": "Язык интерфейса: {0}",
+    "en": "Interface language: {0}",
+    "de": "Oberflächensprache: {0}",
+    "fr": "Langue de l’interface : {0}",
+    "es": "Idioma de la interfaz: {0}",
+    "it": "Lingua dell’interfaccia: {0}",
+    "uk": "Мова інтерфейсу: {0}"
+  },
+  "Status_MenuAction": {
+    "ru": "Выполнена команда: {0}",
+    "en": "Command executed: {0}",
+    "de": "Befehl ausgeführt: {0}",
+    "fr": "Commande exécutée : {0}",
+    "es": "Comando ejecutado: {0}",
+    "it": "Comando eseguito: {0}",
+    "uk": "Команду виконано: {0}"
+  },
+  "Status_StudentAdded": {
+    "ru": "Добавлен студент: {0}",
+    "en": "Student added: {0}",
+    "de": "Studierender hinzugefügt: {0}",
+    "fr": "Élève ajouté : {0}",
+    "es": "Estudiante añadido: {0}",
+    "it": "Studente aggiunto: {0}",
+    "uk": "Студента додано: {0}"
+  },
+  "Status_StudentEdited": {
+    "ru": "Изменена запись: {0}",
+    "en": "Record updated: {0}",
+    "de": "Eintrag geändert: {0}",
+    "fr": "Fiche modifiée : {0}",
+    "es": "Registro actualizado: {0}",
+    "it": "Record aggiornato: {0}",
+    "uk": "Запис змінено: {0}"
+  },
+  "Status_StudentsDeleted": {
+    "ru": "Удалено строк: {0}",
+    "en": "Rows deleted: {0}",
+    "de": "Gelöschte Zeilen: {0}",
+    "fr": "Lignes supprimées : {0}",
+    "es": "Filas eliminadas: {0}",
+    "it": "Righe eliminate: {0}",
+    "uk": "Видалено рядків: {0}"
+  },
+  "Status_StudentsCopied": {
+    "ru": "Скопировано строк: {0}",
+    "en": "Rows copied: {0}",
+    "de": "Kopierte Zeilen: {0}",
+    "fr": "Lignes copiées : {0}",
+    "es": "Filas copiadas: {0}",
+    "it": "Righe copiate: {0}",
+    "uk": "Скопійовано рядків: {0}"
+  },
+  "Status_StudentsCut": {
+    "ru": "Вырезано строк: {0}",
+    "en": "Rows cut: {0}",
+    "de": "Ausgeschnittene Zeilen: {0}",
+    "fr": "Lignes coupées : {0}",
+    "es": "Filas cortadas: {0}",
+    "it": "Righe tagliate: {0}",
+    "uk": "Вирізано рядків: {0}"
+  },
+  "Status_StudentsPasted": {
+    "ru": "Вставлено строк в таблицу 2: {0}",
+    "en": "Rows pasted into table 2: {0}",
+    "de": "In Tabelle 2 eingefügte Zeilen: {0}",
+    "fr": "Lignes collées dans le tableau 2 : {0}",
+    "es": "Filas pegadas en la tabla 2: {0}",
+    "it": "Righe incollate nella tabella 2: {0}",
+    "uk": "Вставлено рядків у таблицю 2: {0}"
+  },
+  "Status_ClipboardUnavailable": {
+    "ru": "Буфер обмена недоступен. Попробуйте ещё раз.",
+    "en": "Clipboard unavailable. Try again.",
+    "de": "Zwischenablage nicht verfügbar. Bitte erneut versuchen.",
+    "fr": "Presse-papiers indisponible. Réessayez.",
+    "es": "Portapapeles no disponible. Inténtalo de nuevo.",
+    "it": "Appunti non disponibili. Riprova.",
+    "uk": "Буфер обміну недоступний. Спробуйте ще раз."
+  },
+  "Status_ClipboardInvalid": {
+    "ru": "В буфере обмена нет строк в формате «фамилия, группа, оценка».",
+    "en": "The clipboard contains no rows in last name, group, grade format.",
+    "de": "Die Zwischenablage enthält keine Zeilen mit Nachname, Gruppe und Note.",
+    "fr": "Le presse-papiers ne contient aucune ligne au format nom, groupe, note.",
+    "es": "El portapapeles no contiene filas con apellido, grupo y nota.",
+    "it": "Gli appunti non contengono righe con cognome, gruppo e voto.",
+    "uk": "У буфері обміну немає рядків у форматі «прізвище, група, оцінка»."
+  },
+  "Status_SettingsReset": {
+    "ru": "Настройки сброшены по умолчанию",
+    "en": "Default settings restored",
+    "de": "Standardeinstellungen wiederhergestellt",
+    "fr": "Paramètres par défaut rétablis",
+    "es": "Configuración predeterminada restaurada",
+    "it": "Impostazioni predefinite ripristinate",
+    "uk": "Типові налаштування відновлено"
+  }
+}
