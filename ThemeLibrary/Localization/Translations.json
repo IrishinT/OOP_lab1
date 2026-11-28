@@ -441,13 +441,13 @@
     "uk": "Копіювати з таблиці 1"
   },
   "Loc_Paste": {
-    "ru": "Вставить (в Таблицу 2)",
-    "en": "Paste (to Table 2)",
-    "de": "Einfügen (in Tabelle 2)",
-    "fr": "Coller dans le tableau 2",
-    "es": "Pegar en la tabla 2",
-    "it": "Incolla nella tabella 2",
-    "uk": "Вставити в таблицю 2"
+    "ru": "Вставить в таблицу {0}",
+    "en": "Paste into table {0}",
+    "de": "In Tabelle {0} einfügen",
+    "fr": "Coller dans le tableau {0}",
+    "es": "Pegar en la tabla {0}",
+    "it": "Incolla nella tabella {0}",
+    "uk": "Вставити в таблицю {0}"
   },
   "Loc_ColLastName": {
     "ru": "Фамилия",
@@ -655,15 +655,6 @@
     "es": "Copiar las filas seleccionadas",
     "it": "Copia le righe selezionate",
     "uk": "Копіювати вибрані рядки"
-  },
-  "Loc_MenuPasteRow": {
-    "ru": "Вставить во 2-ю таблицу",
-    "en": "Paste to Table 2",
-    "de": "In Tabelle 2 einfügen",
-    "fr": "Coller dans le tableau 2",
-    "es": "Pegar en la tabla 2",
-    "it": "Incolla nella tabella 2",
-    "uk": "Вставити в таблицю 2"
   },
   "Loc_MenuDeleteRow": {
     "ru": "Удалить выбранные строки",
@@ -981,13 +972,31 @@
     "uk": "Вирізано рядків: {0}"
   },
   "Status_StudentsPasted": {
-    "ru": "Вставлено строк в таблицу 2: {0}",
-    "en": "Rows pasted into table 2: {0}",
-    "de": "In Tabelle 2 eingefügte Zeilen: {0}",
-    "fr": "Lignes collées dans le tableau 2 : {0}",
-    "es": "Filas pegadas en la tabla 2: {0}",
-    "it": "Righe incollate nella tabella 2: {0}",
-    "uk": "Вставлено рядків у таблицю 2: {0}"
+    "ru": "Вставлено строк в таблицу {1}: {0}",
+    "en": "Rows pasted into table {1}: {0}",
+    "de": "In Tabelle {1} eingefügte Zeilen: {0}",
+    "fr": "Lignes collées dans le tableau {1} : {0}",
+    "es": "Filas pegadas en la tabla {1}: {0}",
+    "it": "Righe incollate nella tabella {1}: {0}",
+    "uk": "Вставлено рядків у таблицю {1}: {0}"
+  },
+  "Status_StudentsUndo": {
+    "ru": "Изменение отменено",
+    "en": "Change undone",
+    "de": "Änderung rückgängig gemacht",
+    "fr": "Modification annulée",
+    "es": "Cambio deshecho",
+    "it": "Modifica annullata",
+    "uk": "Зміну скасовано"
+  },
+  "Status_StudentsRedo": {
+    "ru": "Изменение повторено",
+    "en": "Change redone",
+    "de": "Änderung wiederhergestellt",
+    "fr": "Modification rétablie",
+    "es": "Cambio rehecho",
+    "it": "Modifica ripristinata",
+    "uk": "Зміну повторено"
   },
   "Status_ClipboardUnavailable": {
     "ru": "Буфер обмена недоступен. Попробуйте ещё раз.",

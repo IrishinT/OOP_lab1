@@ -18,6 +18,9 @@ namespace OOP_lab1.ViewModels
 
         private Student? _selectedStudent;
         private Student? _selectedSecondStudent;
+        private int _activeTableNumber = 1;
+        private readonly Stack<(Action Undo, Action Redo)> _undoHistory = new();
+        private readonly Stack<(Action Undo, Action Redo)> _redoHistory = new();
 
         private int _demoCounter = 1;
         private string _bindingModeText = Loc.Tr("Demo_InitialText");
@@ -28,7 +31,7 @@ namespace OOP_lab1.ViewModels
         private string _inputGrade = "5";
         private string _statusMessage = Loc.Tr("Status_Ready");
 
-        public MainViewModel()
+        public MainViewModel(Func<bool>? commitTableEdit = null)
         {
             Students = new ObservableCollection<Student>
             {
@@ -38,13 +41,18 @@ namespace OOP_lab1.ViewModels
             };
 
             SecondStudents = new ObservableCollection<Student>();
+            foreach (Student student in Students)
+                student.EditCommitted += Student_EditCommitted;
 
-            AddStudentCommand = new RelayCommand(_ => AddStudent(), _ => CanAddStudent());
-            EditStudentCommand = new RelayCommand(_ => EditStudent(), _ => SelectedStudent != null && CanAddStudent());
-            DeleteStudentsCommand = new RelayCommand(rows => DeleteStudents((IList)rows!), HasSelectedRows);
-            CopyStudentsCommand = new RelayCommand(rows => CopyStudents((IList)rows!, cut: false), HasSelectedRows);
-            CutStudentsCommand = new RelayCommand(rows => CopyStudents((IList)rows!, cut: true), HasSelectedRows);
-            PasteStudentsCommand = new RelayCommand(_ => PasteStudents(), _ => StudentClipboard.HasText());
+            AddStudentCommand = CreateTableCommand(_ => AddStudent(), _ => CanAddStudent());
+            EditStudentCommand = CreateTableCommand(_ => EditStudent(), _ => SelectedStudent != null && CanAddStudent());
+            DeleteStudentsCommand = CreateTableCommand(rows => DeleteStudents((IList)rows!), HasSelectedRows);
+            CopyStudentsCommand = CreateTableCommand(rows => CopyStudents((IList)rows!, cut: false), HasSelectedRows);
+            CutStudentsCommand = CreateTableCommand(rows => CopyStudents((IList)rows!, cut: true), HasSelectedRows);
+            PasteStudentsCommand = CreateTableCommand(target => PasteStudents((int)target!),
+                target => target is 1 or 2 && StudentClipboard.HasText());
+            UndoStudentsCommand = CreateTableCommand(_ => MoveHistory(undo: true));
+            RedoStudentsCommand = CreateTableCommand(_ => MoveHistory(undo: false));
 
             ResetSettingsCommand = new RelayCommand(_ => ResetSettings());
             ShowActionMessageCommand = new RelayCommand(param =>
@@ -57,6 +65,15 @@ namespace OOP_lab1.ViewModels
             {
                 BindingModeText = string.Format(Loc.Tr("Demo_ChangedText"), _demoCounter++);
             });
+
+            ICommand CreateTableCommand(Action<object?> execute, Predicate<object?>? canExecute = null)
+            {
+                return new RelayCommand(parameter =>
+                {
+                    if ((commitTableEdit?.Invoke() ?? true) && (canExecute?.Invoke(parameter) ?? true))
+                        execute(parameter);
+                }, canExecute);
+            }
         }
 
         public IReadOnlyList<AppTheme> Themes { get; } = Enum.GetValues<AppTheme>();
@@ -117,6 +134,12 @@ namespace OOP_lab1.ViewModels
         public ObservableCollection<Student> Students { get; }
         public ObservableCollection<Student> SecondStudents { get; }
 
+        public int ActiveTableNumber
+        {
+            get => _activeTableNumber;
+            internal set => SetProperty(ref _activeTableNumber, value);
+        }
+
         public Student? SelectedStudent
         {
             get => _selectedStudent;
@@ -128,9 +151,7 @@ namespace OOP_lab1.ViewModels
                     {
                         _selectedSecondStudent = null;
                         OnPropertyChanged(nameof(SelectedSecondStudent));
-                        InputLastName = value.LastName;
-                        InputGroup = value.Group;
-                        InputGrade = value.Grade.ToString();
+                        LoadStudentInputs(value);
                     }
                     CommandManager.InvalidateRequerySuggested();
                 }
@@ -178,6 +199,8 @@ namespace OOP_lab1.ViewModels
         public ICommand CopyStudentsCommand { get; }
         public ICommand CutStudentsCommand { get; }
         public ICommand PasteStudentsCommand { get; }
+        public ICommand UndoStudentsCommand { get; }
+        public ICommand RedoStudentsCommand { get; }
         public ICommand ResetSettingsCommand { get; }
         public ICommand ShowActionMessageCommand { get; }
         public ICommand ExitCommand { get; }
@@ -213,7 +236,7 @@ namespace OOP_lab1.ViewModels
                 Group = InputGroup.Trim(),
                 Grade = grade
             };
-            Students.Add(student);
+            AddStudents(Students, [student]);
             SelectedStudent = student;
             SetStatus("Status_StudentAdded", student.LastName);
         }
@@ -223,10 +246,48 @@ namespace OOP_lab1.ViewModels
             if (SelectedStudent == null) return;
             int.TryParse(InputGrade, out int grade);
 
-            SelectedStudent.LastName = InputLastName.Trim();
-            SelectedStudent.Group = InputGroup.Trim();
-            SelectedStudent.Grade = grade;
-            SetStatus("Status_StudentEdited", SelectedStudent.LastName);
+            Student student = SelectedStudent;
+            Student before = student.Clone();
+            student.LastName = InputLastName.Trim();
+            student.Group = InputGroup.Trim();
+            student.Grade = grade;
+            RecordStudentEdit(student, before);
+        }
+
+        private void Student_EditCommitted(object? sender, Student before)
+        {
+            var student = (Student)sender!;
+            if (student == SelectedStudent && InputLastName == before.LastName &&
+                InputGroup == before.Group && InputGrade == before.Grade.ToString())
+            {
+                LoadStudentInputs(student);
+            }
+
+            RecordStudentEdit(student, before);
+        }
+
+        private void RecordStudentEdit(Student student, Student before)
+        {
+            if (student.LastName == before.LastName && student.Group == before.Group && student.Grade == before.Grade)
+                return;
+
+            Student after = student.Clone();
+            RecordChange(() => ApplyStudentValues(before), () => ApplyStudentValues(after));
+            SetStatus("Status_StudentEdited", student.LastName);
+
+            void ApplyStudentValues(Student values)
+            {
+                student.CopyFrom(values);
+                if (student == SelectedStudent)
+                    LoadStudentInputs(student);
+            }
+        }
+
+        private void LoadStudentInputs(Student student)
+        {
+            InputLastName = student.LastName;
+            InputGroup = student.Group;
+            InputGrade = student.Grade.ToString();
         }
 
         private static bool HasSelectedRows(object? parameter) => parameter is IList { Count: > 0 };
@@ -238,13 +299,48 @@ namespace OOP_lab1.ViewModels
             SetStatus("Status_StudentsDeleted", rows.Length);
         }
 
-        private void RemoveStudents(IEnumerable<Student> rows)
+        private void AddStudents(ObservableCollection<Student> table, IReadOnlyList<Student> students)
         {
-            foreach (Student student in rows)
+            int startIndex = table.Count;
+            var rows = students.Select((student, offset) => (Student: student, Index: startIndex + offset)).ToArray();
+            ChangeRows(table, rows, remove: false);
+        }
+
+        private void RemoveStudents(IReadOnlyList<Student> students)
+        {
+            var table = Students.Contains(students[0]) ? Students : SecondStudents;
+            var rows = students.Select(student => (Student: student, Index: table.IndexOf(student)))
+                .OrderBy(row => row.Index)
+                .ToArray();
+            ChangeRows(table, rows, remove: true);
+        }
+
+        private void ChangeRows(ObservableCollection<Student> table, (Student Student, int Index)[] rows, bool remove)
+        {
+            void Insert()
             {
-                if (!Students.Remove(student))
-                    SecondStudents.Remove(student);
+                foreach (var row in rows)
+                {
+                    if (table == Students)
+                        row.Student.EditCommitted += Student_EditCommitted;
+                    table.Insert(row.Index, row.Student);
+                }
             }
+
+            void Remove()
+            {
+                foreach (var row in rows)
+                {
+                    if (table == Students)
+                        row.Student.EditCommitted -= Student_EditCommitted;
+                    table.Remove(row.Student);
+                }
+            }
+
+            Action undo = remove ? Insert : Remove;
+            Action redo = remove ? Remove : Insert;
+            redo();
+            RecordChange(undo, redo);
         }
 
         private void CopyStudents(IList selection, bool cut)
@@ -263,7 +359,7 @@ namespace OOP_lab1.ViewModels
             CommandManager.InvalidateRequerySuggested();
         }
 
-        private void PasteStudents()
+        private void PasteStudents(int tableNumber)
         {
             var rows = StudentClipboard.Read();
             if (rows == null)
@@ -278,16 +374,33 @@ namespace OOP_lab1.ViewModels
                 return;
             }
 
-            foreach (Student row in rows)
-                SecondStudents.Add(row);
-
-            SetStatus("Status_StudentsPasted", rows.Count);
+            var table = tableNumber == 1 ? Students : SecondStudents;
+            AddStudents(table, rows);
+            SetStatus("Status_StudentsPasted", rows.Count, tableNumber);
         }
 
-        private void SetStatus(string textId, object? value = null)
+        private void RecordChange(Action undo, Action redo)
         {
-            string text = Loc.Tr(textId);
-            StatusMessage = value == null ? text : string.Format(text, value);
+            _undoHistory.Push((undo, redo));
+            _redoHistory.Clear();
+        }
+
+        private void MoveHistory(bool undo)
+        {
+            var source = undo ? _undoHistory : _redoHistory;
+            var destination = undo ? _redoHistory : _undoHistory;
+            if (!source.TryPeek(out var change))
+                return;
+
+            (undo ? change.Undo : change.Redo)();
+            source.Pop();
+            destination.Push(change);
+            SetStatus(undo ? "Status_StudentsUndo" : "Status_StudentsRedo");
+        }
+
+        private void SetStatus(string textId, params object[] values)
+        {
+            StatusMessage = string.Format(Loc.Tr(textId), values);
         }
 
         private void ResetSettings()

@@ -513,7 +513,18 @@
                             </TreeView>
                         </Expander>
 
-                        <Expander Header="{Tr Loc_ExpDataGrid}" IsExpanded="True" Margin="0,0,0,5">
+                        <Expander Header="{Tr Loc_ExpDataGrid}" IsExpanded="True" Margin="0,0,0,5"
+                                  PreviewKeyDown="StudentData_PreviewKeyDown">
+                            <Expander.Resources>
+                                <Style x:Key="StudentGridStyle" TargetType="DataGrid" BasedOn="{StaticResource {x:Type DataGrid}}">
+                                    <Setter Property="BorderThickness" Value="2"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                            <Setter Property="BorderBrush" Value="{StaticResource Primary500Brush}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Expander.Resources>
                             <StackPanel Margin="10">
                                 <ToolBarTray Margin="0,0,0,10">
                                     <ToolBar Margin="0,0,0,10">
@@ -523,9 +534,10 @@
                                             CommandParameter="{Binding SelectedItems, ElementName=StudentsGrid}"
                                             ToolTip="Ctrl+C"
                                             Margin="0,0,6,0"/>
-                                        <Button Content="{Tr Loc_Paste}"
+                                        <Button Content="{Tr Loc_Paste, {Binding ActiveTableNumber}}"
                                             Style="{StaticResource SuccessButtonStyle}"
                                             Command="{Binding PasteStudentsCommand}"
+                                            CommandParameter="{Binding ActiveTableNumber}"
                                             ToolTip="Ctrl+V"/>
                                     </ToolBar>
                                 </ToolBarTray>
@@ -570,13 +582,17 @@
                                     <StackPanel Grid.Column="0">
                                         <TextBlock Text="{Tr Loc_Table1Title}" FontWeight="Bold" Margin="0,0,0,5"/>
                                         <DataGrid x:Name="StudentsGrid"
+                                                  Style="{StaticResource StudentGridStyle}"
                                                   ItemsSource="{Binding Students}"
                                                   SelectedItem="{Binding SelectedStudent}"
                                                   AutoGenerateColumns="False"
                                                   CanUserAddRows="False"
+                                                  CanUserDeleteRows="False"
                                                   SelectionMode="Extended"
                                                   SelectionUnit="FullRow"
                                                   PreviewKeyDown="StudentsGrid_PreviewKeyDown"
+                                                  PreviewMouseLeftButtonDown="StudentsGrid_PreviewMouseLeftButtonDown"
+                                                  GotKeyboardFocus="StudentsGrid_GotKeyboardFocus"
                                                   Height="160">
                                             <DataGrid.Columns>
                                                 <DataGridTextColumn Binding="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" Width="*">
@@ -600,7 +616,9 @@
 
                                     <StackPanel Grid.Column="2">
                                         <TextBlock Text="{Tr Loc_Table2Title}" FontWeight="Bold" Margin="0,0,0,5"/>
-                                        <DataGrid ItemsSource="{Binding SecondStudents}"
+                                        <DataGrid x:Name="SecondStudentsGrid"
+                                                  Style="{StaticResource StudentGridStyle}"
+                                                  ItemsSource="{Binding SecondStudents}"
                                                   SelectedItem="{Binding SelectedSecondStudent}"
                                                   AutoGenerateColumns="False"
                                                   CanUserAddRows="False"
@@ -608,6 +626,8 @@
                                                   SelectionMode="Extended"
                                                   SelectionUnit="FullRow"
                                                   PreviewKeyDown="StudentsGrid_PreviewKeyDown"
+                                                  PreviewMouseLeftButtonDown="StudentsGrid_PreviewMouseLeftButtonDown"
+                                                  GotKeyboardFocus="StudentsGrid_GotKeyboardFocus"
                                                   Height="160">
                                             <DataGrid.Columns>
                                                 <DataGridTextColumn Binding="{Binding LastName}" Width="*">
@@ -664,7 +684,8 @@
                                     <MenuItem Header="{Tr Loc_MenuEdit}">
                                         <MenuItem Header="{Tr Loc_MenuCopyRow}" Command="{Binding CopyStudentsCommand}"
                                                   CommandParameter="{Binding SelectedItems, ElementName=StudentsGrid}"/>
-                                        <MenuItem Header="{Tr Loc_MenuPasteRow}" Command="{Binding PasteStudentsCommand}"/>
+                                        <MenuItem Header="{Tr Loc_Paste, {Binding ActiveTableNumber}}" Command="{Binding PasteStudentsCommand}"
+                                                  CommandParameter="{Binding ActiveTableNumber}"/>
                                     </MenuItem>
                                 </Menu>
 
@@ -676,7 +697,8 @@
                                         <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
                                             <MenuItem Header="{Tr Loc_MenuCopyRow}" Command="{Binding CopyStudentsCommand}"
                                                       CommandParameter="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource AncestorType=ContextMenu}}"/>
-                                            <MenuItem Header="{Tr Loc_MenuPasteRow}" Command="{Binding PasteStudentsCommand}"/>
+                                            <MenuItem Header="{Tr Loc_Paste, {Binding ActiveTableNumber}}" Command="{Binding PasteStudentsCommand}"
+                                                      CommandParameter="{Binding ActiveTableNumber}"/>
                                             <MenuItem Header="{Tr Loc_MenuDeleteRow}" Command="{Binding DeleteStudentsCommand}"
                                                       CommandParameter="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource AncestorType=ContextMenu}}"/>
                                         </ContextMenu>
